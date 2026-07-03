@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>役員候補度診断 | 役員.com</title>
+<meta name="description" content="3分・10問で、あなたの役員候補度をスコアとレーダーで診断します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .diag-wrap{max-width:760px;margin:0 auto;padding:40px 24px 80px}
+  .provnote{background:#FDF8EC;border:1px dashed #D9B24A;border-radius:var(--radius);padding:12px 16px;font-size:12.5px;color:#8A6A22;margin-bottom:26px;text-align:center}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:40px 38px;box-shadow:0 10px 30px rgba(21,42,68,.05)}
+  @media(max-width:600px){.panel{padding:28px 20px}}
+  .screen{display:none}.screen.active{display:block}
+  .d-center{text-align:center}
+  .d-hero-en{font-family:var(--eng);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--green-soft);font-weight:500}
+  .d-title{font-family:var(--serif);font-size:27px;color:var(--navy);font-weight:600;margin:12px 0 8px}
+  .d-sub{font-size:14px;color:var(--ink-soft);margin-bottom:22px}
+  .d-meta{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--ink-soft);margin-bottom:26px}
+  .d-meta b{color:var(--navy)}
+  .prog-head{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-mute);margin-bottom:7px}
+  .prog{height:5px;background:var(--surface-2);border-radius:3px;overflow:hidden;margin-bottom:28px}
+  .prog>div{height:100%;background:var(--gold);width:0;transition:width .35s}
+  .q-text{font-family:var(--serif);font-size:20px;color:var(--navy);font-weight:600;margin-bottom:20px;line-height:1.6}
+  .opts{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
+  .opt{border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;font-size:15px;color:var(--ink);cursor:pointer;transition:.15s;display:flex;justify-content:space-between;align-items:center;background:#fff}
+  .opt:hover{border-color:var(--green-soft);background:#FAFBFA}
+  .opt.sel{border-color:var(--navy);background:#F4F7FA;color:var(--navy);font-weight:500}
+  .opt .ck{opacity:0;color:var(--green-soft);font-weight:700}
+  .opt.sel .ck{opacity:1}
+  .nav-row{display:flex;justify-content:space-between;align-items:center}
+  .link-btn{background:none;border:none;color:var(--ink-mute);font-size:14px;cursor:pointer;font-family:var(--sans)}
+  .link-btn:hover{color:var(--navy)}
+  .gate{display:grid;grid-template-columns:1fr 1.15fr;gap:26px;align-items:center}
+  @media(max-width:600px){.gate{grid-template-columns:1fr}}
+  .gate .prev{background:var(--navy-deep);border-radius:6px;padding:26px;text-align:center;color:#fff}
+  .gate .prev .l{font-size:12px;color:rgba(255,255,255,.7)}
+  .gate .prev .blur{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--gold);filter:blur(7px);margin:6px 0}
+  .gate .prev .lock{font-size:11px;color:rgba(255,255,255,.7);margin-top:8px}
+  input[type=email]{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:var(--radius);font-size:15px;font-family:var(--sans);margin-bottom:14px}
+  input[type=email]:focus{outline:none;border-color:var(--navy)}
+  .consent{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--ink-soft);margin-bottom:9px}
+  .consent input{margin-top:4px}
+  .btn-full{width:100%;justify-content:center}
+  .score-hero{text-align:center;padding:26px;background:linear-gradient(180deg,#fff,#F4F7FA);border:1px solid var(--line);border-radius:6px;margin-bottom:22px}
+  .score-hero .l{font-size:13px;color:var(--ink-soft)}
+  .score-hero .big{font-family:var(--serif);font-size:46px;font-weight:700;color:var(--navy);line-height:1.15}
+  .score-hero .co{font-size:12.5px;color:var(--ink-mute)}
+  .r-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+  @media(max-width:560px){.r-grid{grid-template-columns:1fr}}
+  .r-panel{background:var(--surface-2);border-radius:6px;padding:18px}
+  .r-panel .h{font-family:var(--eng);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-soft);margin-bottom:12px}
+  .bar{margin-bottom:11px}
+  .bar .n{font-size:12px;color:var(--ink);display:flex;justify-content:space-between;margin-bottom:4px}
+  .bar .t{height:6px;background:#E4E0D7;border-radius:3px}
+  .bar .t>div{height:100%;background:var(--navy);border-radius:3px}
+  .cmt{background:#F4F7FA;border-radius:6px;padding:16px 18px;font-size:14px;color:var(--ink-soft);margin-bottom:22px;line-height:1.8}
+  .cmt b{color:var(--navy)}
+  .cta2{display:flex;gap:12px}@media(max-width:560px){.cta2{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><span class="name">役員.com</span><span class="en">Executive Career Research</span></a>
+    <nav class="nav">
+      <a href="index.html#research">調査</a>
+      <a href="column.html">コラム</a>
+      <a href="index.html#about">運営</a>
+      <a class="btn btn-primary" href="shindan.html">診断</a>
+    </nav>
+  </div>
+</header>
+
+<div class="diag-wrap">
+  <div class="provnote">この診断の設問・スコアは暫定版です（確定後に差し替え予定）。入口→設問→結果まで実際に動作します。</div>
+  <div class="panel">
+
+    <!-- intro -->
+    <section class="screen active" id="s-intro">
+      <div class="d-center">
+        <span class="d-hero-en">Diagnosis</span>
+        <div class="d-title">役員候補度診断</div>
+        <div class="d-sub">あなたは役員候補として、いまどの位置にいるのか。</div>
+        <div class="d-meta"><span>&#9201; 約3分・<b>10問</b></span><span>&#9636; <b>スコア＋レーダー</b></span><span>&#9823; <b>同職位ベンチマーク</b></span></div>
+        <button class="btn btn-primary" onclick="go('s-q')">診断をはじめる <span class="arw">&rsaquo;</span></button>
+        <p style="font-size:12px;color:var(--ink-mute);margin-top:18px">回答は統計化・匿名化のうえ活用します（個人が特定される形では公開されません）</p>
+      </div>
+    </section>
+
+    <!-- questions -->
+    <section class="screen" id="s-q">
+      <div class="prog-head"><span id="qc">質問 1 / 10</span><span id="qp">10%</span></div>
+      <div class="prog"><div id="qf"></div></div>
+      <div class="q-text" id="qt"></div>
+      <div class="opts" id="qo"></div>
+      <div class="nav-row">
+        <button class="link-btn" id="qb" onclick="prevQ()">&lsaquo; 戻る</button>
+        <button class="btn btn-primary" id="qn" onclick="nextQ()" disabled style="opacity:.45">次へ <span class="arw">&rsaquo;</span></button>
+      </div>
+    </section>
+
+    <!-- gate -->
+    <section class="screen" id="s-gate">
+      <span class="d-hero-en">Almost there</span>
+      <div class="d-title" style="font-size:23px">診断完了。結果を見るには登録を。</div>
+      <div class="d-sub">スコア・レーダー・同職位ベンチマークが表示されます。</div>
+      <div class="gate">
+        <div class="prev">
+          <div class="l">あなたの役員候補度</div>
+          <div class="blur">上位 ?? %</div>
+          <div class="lock">&#128274; 登録で表示</div>
+        </div>
+        <div>
+          <input type="email" placeholder="name@company.com" id="email">
+          <label class="consent"><input type="checkbox" checked> 回答の統計化・匿名化での活用に同意（必須）</label>
+          <label class="consent"><input type="checkbox"> 非公開求人・キャリア情報の受け取り（任意）</label>
+          <label class="consent"><input type="checkbox"> キャリア面談の案内（任意）</label>
+          <button class="btn btn-primary btn-full" style="margin-top:6px" onclick="showResult()">結果を見る</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- result -->
+    <section class="screen" id="s-result">
+      <div class="score-hero">
+        <div class="l">あなたの役員候補度</div>
+        <div class="big" id="rpct">上位 18%</div>
+        <div class="co" id="rco">同職位・同年代との比較</div>
+      </div>
+      <div class="r-grid">
+        <div class="r-panel"><div class="h">Strength Radar</div><div id="radar"></div></div>
+        <div class="r-panel"><div class="h">Benchmark</div><div id="bars"></div><div style="font-size:11px;color:var(--ink-mute);margin-top:6px">同職位の平均との比較</div></div>
+      </div>
+      <div class="cmt" id="rcmt"></div>
+      <div class="cta2">
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="alert('Phase 2で実装：非公開の市場レポート（報酬相場・フェーズ別の役員像）')">非公開「市場」レポートを見る</button>
+        <button class="btn btn-ghost" style="flex:1;justify-content:center" onclick="alert('Phase 1ではここで面談希望を受け付け、ブライエッジへ連携します')">キャリア相談する</button>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-mute);margin-top:16px;text-align:center">※ スコアは経験項目からの暫定算出。回答が増えるほど精度が上がります。</p>
+    </section>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="legal" style="border-top:none;padding-top:0">
+      <span>運営：ブライエッジ株式会社 ／ 有料職業紹介事業許可 ◯◯-◯◯◯◯◯◯（要差し替え）</span>
+      <span>&copy; BRIEDGE CORPORATION</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== 暫定設問（確定後に差し替え） ===== */
+const QS=[
+ {t:"現在の役職は？",k:"role",o:[["課長／マネージャー",40],["部長",55],["本部長／事業部長",65],["執行役員候補／VP",75],["執行役員／取締役／CxO",88]]},
+ {t:"業界は？（記録用）",k:"ind",o:[["IT・SaaS／インターネット",0],["メーカー・製造",0],["金融",0],["商社・流通・小売",0],["その他",0]]},
+ {t:"会社のフェーズは？（記録用）",k:"stage",o:[["スタートアップ（創業初期）",0],["成長・拡大期",0],["IPO準備中",0],["上場企業",0],["大企業・老舗",0]]},
+ {t:"直接マネジメントした人数（最大時）は？",k:"mgr",o:[["0名",10],["1〜5名",35],["6〜20名",60],["21〜50名",80],["51名以上",95]]},
+ {t:"PL（損益）責任の規模は？",k:"pl",o:[["なし",10],["部門・チームの予算責任",40],["事業PL（数億〜数十億）",75],["全社PL",95]]},
+ {t:"経営会議への関与は？",k:"kai",o:[["関わりなし",10],["資料提出・報告のみ",35],["常時参加している",65],["意思決定に関与している",90]]},
+ {t:"役員・CxOと働いた経験は？",k:"work",o:[["なし",10],["上司が役員・CxOだった",40],["役員・CxOの直下で働いた",65],["役員・CxOと協働で事業推進",88]]},
+ {t:"経験した事業フェーズは？",k:"phase",o:[["安定・成熟事業のみ",25],["拡大期を経験",50],["IPO準備・上場を経験",78],["0→1の立ち上げを含む複数",92]]},
+ {t:"専門領域（最も近いもの）は？（記録用）",k:"func",o:[["事業・営業・マーケ",0],["プロダクト・開発",0],["経営企画",0],["財務・経理",0],["人事・組織",0]]},
+ {t:"採用・組織づくりの経験は？",k:"org2",o:[["なし",10],["数名の採用に関与",35],["チームの立ち上げを経験",65],["全社の採用・組織設計に関与",90]]},
+];
+let cur=0; const ans=new Array(QS.length).fill(null);
+
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);if(id==='s-q')renderQ();}
+function renderQ(){
+ const q=QS[cur];
+ document.getElementById('qc').textContent=`質問 ${cur+1} / ${QS.length}`;
+ const pct=Math.round((cur)/QS.length*100);
+ document.getElementById('qp').textContent=pct+'%';
+ document.getElementById('qf').style.width=pct+'%';
+ document.getElementById('qt').textContent=q.t;
+ const box=document.getElementById('qo');box.innerHTML='';
+ q.o.forEach((o,i)=>{const d=document.createElement('div');d.className='opt'+(ans[cur]===i?' sel':'');
+   d.innerHTML=`<span>${o[0]}</span><span class="ck">&#10003;</span>`;
+   d.onclick=()=>{ans[cur]=i;renderQ();};box.appendChild(d);});
+ document.getElementById('qb').style.visibility=cur===0?'hidden':'visible';
+ const nx=document.getElementById('qn');const ready=ans[cur]!==null;nx.disabled=!ready;nx.style.opacity=ready?1:.45;
+ nx.innerHTML=(cur===QS.length-1?'結果へ進む':'次へ')+' <span class="arw">&rsaquo;</span>';
+}
+function nextQ(){if(ans[cur]===null)return;if(cur<QS.length-1){cur++;renderQ();}else{go('s-gate');}}
+function prevQ(){if(cur>0){cur--;renderQ();}}
+
+function val(k){const q=QS.find(x=>x.k===k);const i=ans[QS.indexOf(q)];return i==null?0:q.o[i][1];}
+function roleLabel(){const i=ans[0];return i==null?'':QS[0].o[i][0];}
+
+function showResult(){
+ const role=val('role'), pl=val('pl'), mgr=val('mgr'), kai=val('kai'), work=val('work'), phase=val('phase'), org2=val('org2');
+ const keiei=Math.round((kai+work)/2);
+ const org=Math.round(mgr*0.6+org2*0.4);
+ const senmon=Math.round((role+pl)/2);
+ const comp=Math.round(pl*0.25+keiei*0.25+org*0.20+phase*0.15+senmon*0.15);
+ let band; if(comp>=80)band=5;else if(comp>=70)band=12;else if(comp>=60)band=22;else if(comp>=50)band=38;else if(comp>=40)band=55;else band=72;
+ document.getElementById('rpct').textContent='上位 '+band+'%';
+ document.getElementById('rco').textContent=roleLabel()+'クラス・同年代との比較（暫定・N=◯◯）';
+ drawRadar([pl,keiei,org,phase,senmon]);
+ drawBars([['事業・PL責任',pl,55],['経営への近さ',keiei,50],['組織マネジメント',org,52]]);
+ const axes=[['事業・PL責任',pl],['経営への近さ',keiei],['組織マネジメント',org],['事業フェーズ経験',phase],['専門性',senmon]].sort((a,b)=>b[1]-a[1]);
+ document.getElementById('rcmt').innerHTML=`<b>強み：</b>${axes[0][0]}。<b>あと一歩：</b>${axes[4][0]}を強化すると、役員到達がより近づきます。`;
+ go('s-result');
+}
+function drawRadar(v){
+ const labels=['PL','経営','組織','フェーズ','専門'];const cx=110,cy=100,R=72,n=5;let grid='',axis='';
+ for(let r=1;r<=3;r++){let p='';for(let i=0;i<n;i++){const a=-Math.PI/2+i*2*Math.PI/n;p+=(cx+Math.cos(a)*R*r/3)+','+(cy+Math.sin(a)*R*r/3)+' ';}grid+=`<polygon points="${p}" fill="none" stroke="#DDD8CC"/>`;}
+ let pts='';for(let i=0;i<n;i++){const a=-Math.PI/2+i*2*Math.PI/n;axis+=`<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*R}" y2="${cy+Math.sin(a)*R}" stroke="#DDD8CC"/>`;const lx=cx+Math.cos(a)*(R+15),ly=cy+Math.sin(a)*(R+15);axis+=`<text x="${lx}" y="${ly+4}" font-size="10" fill="#5C6570" text-anchor="middle" font-family="Noto Sans JP">${labels[i]}</text>`;const rr=R*v[i]/100;pts+=(cx+Math.cos(a)*rr)+','+(cy+Math.sin(a)*rr)+' ';}
+ document.getElementById('radar').innerHTML=`<svg viewBox="0 0 220 205" width="100%">${grid}${axis}<polygon points="${pts}" fill="rgba(39,74,63,.22)" stroke="#274A3F" stroke-width="2"/></svg>`;
+}
+function drawBars(rows){document.getElementById('bars').innerHTML=rows.map(([n,v,avg])=>`<div class="bar"><div class="n"><span>${n}</span><span>${v}</span></div><div class="t"><div style="width:${v}%"></div></div></div>`).join('');}
+</script>
+</body>
+</html>
