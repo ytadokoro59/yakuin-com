@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>役員.com | 次世代役員候補のキャリア研究メディア</title>
+<meta name="description" content="役員・CxO・執行役員候補のキャリア実態を研究するメディア。あなたの役員候補度を診断できます。運営：ブライエッジ株式会社">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* 仮画像用：ネイビー・ダブルトーン統一。本番写真に差し替え時は .duo/.demo を外す */
+  .photo.duo img{filter:grayscale(1) contrast(1.05) brightness(1.12)}
+  .photo.duo::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(21,42,68,.66),rgba(39,74,63,.42));mix-blend-mode:multiply;pointer-events:none;z-index:1}
+  .photo.demo::before{content:"仮画像";position:absolute;top:8px;left:8px;z-index:3;font-size:10px;font-weight:700;color:#fff;background:rgba(21,42,68,.78);border:1px solid rgba(255,255,255,.45);border-radius:3px;padding:1px 7px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <span class="name">役員.com</span>
+      <span class="en">Executive Career Research</span>
+    </a>
+    <nav class="nav">
+      <a href="#research">調査データ</a>
+      <a href="column.html">コラム</a>
+      <a href="#about">運営</a>
+      <a class="btn btn-primary" href="shindan.html">役員候補度を診断</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div>
+      <span class="kicker on-dark">Executive Career Research</span>
+      <h1>役員になる人は、<br><em>何を経験してきた</em>のか。</h1>
+      <p>役員・CxO・執行役員候補のキャリア実態を、調査とデータから読み解くメディア。あなたの「役員候補度」を、3分・10問で診断します。</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="shindan.html">無料で役員候補度を診断する <span class="arw">&rsaquo;</span></a>
+        <a class="btn btn-ghost on-dark" href="#research">調査を見る</a>
+      </div>
+      <p class="microtrust">運営：ブライエッジ株式会社（ハイクラス人材紹介）／ 在職中の方の情報収集にも</p>
+    </div>
+    <div class="photo dark ratio-hero duo demo">
+      <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1400&q=70&auto=format&fit=crop" alt="落ち着いた執務室のイメージ（仮）">
+      <div class="ph"><b>ヒーロー画像</b>落ち着いた執務室 / 対話イメージ<span class="spec">推奨 1600&times;1200 ・ 4:3</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<section class="bg-surface" style="padding:32px 0">
+  <div class="container" style="display:flex;gap:36px;flex-wrap:wrap;justify-content:center;align-items:center;font-size:13.5px;color:var(--ink-soft)">
+    <span>運営：ブライエッジ株式会社</span>
+    <span style="color:var(--line)">|</span>
+    <span>調査協力 <span class="prov">◯◯名</span><span class="todo">要・実数</span></span>
+    <span style="color:var(--line)">|</span>
+    <span>有料職業紹介事業許可 <span class="prov">◯◯-◯◯◯◯◯◯</span><span class="todo">要・許可番号</span></span>
+  </div>
+</section>
+
+<!-- ============ できること 3列 ============ -->
+<section class="bg-surface" style="padding-top:40px">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="kicker">Why 役員.com</span>
+      <h2 class="h-sec">役員.comでできること</h2>
+    </div>
+    <div class="feat">
+      <div class="item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+        <h4>役員候補度を診断する</h4>
+        <p>経験を10問で入力すると、スコアとレーダーで自分の現在地がわかる。</p>
+      </div>
+      <div class="item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></div>
+        <h4>役員になる人の実態を知る</h4>
+        <p>役員に到達した人の経験・キャリアパスを、調査とコラムで読み解く。</p>
+      </div>
+      <div class="item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a3 3 0 0 1-3 3H8l-5 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3z"/></svg></div>
+        <h4>キャリアを相談する</h4>
+        <p>希望者は、非公開のCxO・役員案件についてブライエッジに相談できる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH ============ -->
+<section id="research" class="bg-soft">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="kicker">Research</span>
+      <h2 class="h-sec">調査からわかった、役員になる人の共通点</h2>
+      <p class="lead">「次世代役員候補キャリア実態調査」より（数値は暫定・調査確定後に差し替え）</p>
+    </div>
+    <div class="grid g3">
+      <div class="stat"><div class="num">73<span style="font-size:24px">%</span></div><div class="lbl">30代で事業責任を経験<span class="todo">暫定</span></div></div>
+      <div class="stat"><div class="num">2.4<span style="font-size:24px">社</span></div><div class="lbl">役員到達者の平均経験社数<span class="todo">暫定</span></div></div>
+      <div class="stat"><div class="num">61<span style="font-size:24px">%</span></div><div class="lbl">PL責任の経験あり<span class="todo">暫定</span></div></div>
+    </div>
+    <div style="max-width:760px;margin:28px auto 0">
+      <div class="rank">
+        <div class="rh">役員に到達した人が積んできた経験 <span class="todo">暫定</span></div>
+        <div class="rsub">TOP 5 ／ 複数回答</div>
+        <div class="rrow"><span class="rk">1</span><span class="rl">事業責任（PL）を持った</span><span class="rv">73%</span><span class="rb"><div style="width:73%"></div></span></div>
+        <div class="rrow"><span class="rk">2</span><span class="rl">組織マネジメント（20名以上）</span><span class="rv">68%</span><span class="rb"><div style="width:68%"></div></span></div>
+        <div class="rrow"><span class="rk">3</span><span class="rl">経営会議への参画</span><span class="rv">54%</span><span class="rb"><div style="width:54%"></div></span></div>
+        <div class="rrow"><span class="rk">4</span><span class="rl">新規事業の立ち上げ（0→1）</span><span class="rv">49%</span><span class="rb"><div style="width:49%"></div></span></div>
+        <div class="rrow"><span class="rk">5</span><span class="rl">採用・組織づくり</span><span class="rv">41%</span><span class="rb"><div style="width:41%"></div></span></div>
+      </div>
+    </div>
+    <p class="center mt24" style="font-size:12.5px;color:var(--ink-mute)">※ 初期は関係者ネットワーク経由の回答を含みます。調査方法・N数は確定後に開示します。</p>
+  </div>
+</section>
+
+<!-- ============ DIAGNOSIS ============ -->
+<section id="diagnosis" class="bg-surface">
+  <div class="container split">
+    <div>
+      <span class="kicker">Diagnosis</span>
+      <h2 class="h-sec">あなたは役員候補として、<br>いまどの位置にいるか。</h2>
+      <p class="lead">経験を10問で入力すると、あなたの「役員候補度」をスコアとレーダーで可視化。同じ職位・年代のベンチマークと比べられます。</p>
+      <div class="steps mt24" style="grid-template-columns:1fr">
+        <div class="step" style="display:flex;gap:16px;align-items:flex-start"><span class="no">01</span><div><h4>3分・10問で診断</h4><p>役職・経験・志向を選択式で回答。</p></div></div>
+        <div class="step" style="display:flex;gap:16px;align-items:flex-start"><span class="no">02</span><div><h4>スコアとレーダーで結果表示</h4><p>強みと、あと一歩の経験がわかる。</p></div></div>
+        <div class="step" style="display:flex;gap:16px;align-items:flex-start"><span class="no">03</span><div><h4>希望者はキャリア相談へ</h4><p>非公開のCxO・役員案件の相談も任意で。</p></div></div>
+      </div>
+      <a class="btn btn-primary mt24" href="shindan.html">診断をはじめる <span class="arw">&rsaquo;</span></a>
+    </div>
+    <div class="photo light ratio-hero">
+      <div class="ph"><b>診断結果イメージ</b>スコア / レーダー / ベンチマーク<span class="spec">診断ページで実際に動作</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSIGHTS / ARTICLES ============ -->
+<section id="insights" class="bg-soft">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="kicker">Insights</span>
+      <h2 class="h-sec">紹介現場から見た、役員キャリアのリアル</h2>
+      <p class="lead">ブライエッジの実際の支援知見をもとにした記事（内容は暫定）</p>
+    </div>
+    <div class="grid g3">
+      <a class="card" href="column.html">
+        <div class="photo light ratio-wide duo demo">
+          <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=1000&q=70&auto=format&fit=crop" alt="">
+          <div class="ph"><b>記事サムネイル</b><span class="spec">推奨 1200&times;675 ・ 16:9</span></div>
+        </div>
+        <div class="body"><span class="tag">On-site Knowledge</span><h3>IPO準備企業のCFOに、本当に求められる経験<span class="todo">暫定</span></h3><div class="meta">ブライエッジ ・ 監修 <span class="prov">◯◯</span></div></div>
+      </a>
+      <a class="card" href="column.html">
+        <div class="photo light ratio-wide duo demo">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1000&q=70&auto=format&fit=crop" alt="">
+          <div class="ph"><b>記事サムネイル</b><span class="spec">推奨 1200&times;675 ・ 16:9</span></div>
+        </div>
+        <div class="body"><span class="tag">On-site Knowledge</span><h3>スタートアップCxOで活躍する人としない人の差<span class="todo">暫定</span></h3><div class="meta">ブライエッジ ・ 監修 <span class="prov">◯◯</span></div></div>
+      </a>
+      <a class="card" href="column.html">
+        <div class="photo light ratio-wide duo demo">
+          <img src="https://images.unsplash.com/photo-1614595737476-42487331b8a1?w=1000&q=70&auto=format&fit=crop" alt="">
+          <div class="ph"><b>記事サムネイル</b><span class="spec">推奨 1200&times;675 ・ 16:9</span></div>
+        </div>
+        <div class="body"><span class="tag">Basics</span><h3>執行役員と取締役は、何が違うのか<span class="todo">暫定</span></h3><div class="meta">ブライエッジ</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="bg-surface">
+  <div class="container split">
+    <div class="photo dark ratio-hero duo demo">
+      <img src="https://images.unsplash.com/photo-1600531529272-023c4b821f14?w=1200&q=70&auto=format&fit=crop" alt="オフィス・対話イメージ（仮）">
+      <div class="ph"><b>運営・コンサルタント写真</b>対話 / 執務イメージ<span class="spec">推奨 1200&times;900 ・ 4:3</span></div>
+    </div>
+    <div>
+      <span class="kicker">About</span>
+      <h2 class="h-sec">企業の採用背景まで理解する、<br>ハイクラス人材紹介が運営。</h2>
+      <p class="lead">役員.comは、IT・SaaS・成長企業の経営者・採用責任者と向き合うブライエッジ株式会社が運営しています。求人票には表れない採用背景・組織課題まで理解したうえで、候補者の経験がどう活きるかを見立てます。</p>
+      <div class="todo-block mt24">
+        <p style="font-size:14px;color:var(--ink-soft);margin:0">会社概要・実績数値・有料職業紹介事業許可番号・監修者プロフィールを、正式なものに差し替えてください。</p>
+        <ul style="font-size:13px;color:var(--ink-soft);margin:10px 0 0 18px">
+          <li>許可番号 <span class="prov">◯◯-◯◯◯◯◯◯</span></li>
+          <li>成約実績・支援年収レンジ・定着率 <span class="prov">正式確認後に反映</span></li>
+          <li>監修コンサルタント（実名・肩書き・顔写真）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="bg-soft">
+  <div class="narrow">
+    <div class="sec-head center">
+      <span class="kicker">FAQ</span>
+      <h2 class="h-sec">よくあるご質問</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary><span class="q"><span class="mk">Q</span>診断は無料ですか？</span><span class="pm">+</span></summary>
+        <div class="ans">はい、無料です。メールアドレスのご登録で、診断結果とベンチマークをご覧いただけます。</div>
+      </details>
+      <details>
+        <summary><span class="q"><span class="mk">Q</span>今すぐ転職するつもりはありませんが、利用できますか？</span><span class="pm">+</span></summary>
+        <div class="ans">はい。自分の現在地を知る情報収集としてご利用いただけます。キャリア相談も、中長期のご相談から歓迎しています。</div>
+      </details>
+      <details>
+        <summary><span class="q"><span class="mk">Q</span>回答内容が公開されたり、勤務先に知られたりしませんか？</span><span class="pm">+</span></summary>
+        <div class="ans">回答は統計化・匿名化のうえで活用し、個人が特定される形で公開することはありません。ご本人の同意なく勤務先に連絡することもありません。</div>
+      </details>
+      <details>
+        <summary><span class="q"><span class="mk">Q</span>診断すると、求人を大量に紹介されますか？</span><span class="pm">+</span></summary>
+        <div class="ans">いいえ。求人案内やキャリア面談は任意です。ご希望された場合のみ、ブライエッジよりご案内します。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="cta-band">
+  <div class="narrow">
+    <span class="kicker on-dark">Get Started</span>
+    <h2>まずは、あなたの役員候補度を知ることから。</h2>
+    <p>今すぐの転職でなくても大丈夫。自分の現在地を知る診断から始められます。</p>
+    <a class="btn btn-gold" href="shindan.html">無料で診断する <span class="arw">&rsaquo;</span></a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="top">
+      <div class="brand"><span class="name">役員.com</span><span class="en">Executive Career Research</span></div>
+      <nav class="fnav">
+        <a href="#research">調査データ</a>
+        <a href="column.html">コラム</a>
+        <a href="#about">運営</a>
+        <a href="shindan.html">診断</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="legal">
+      <span>運営：ブライエッジ株式会社 ／ 有料職業紹介事業許可 <span class="prov">◯◯-◯◯◯◯◯◯</span> <span class="todo">要差し替え</span></span>
+      <span>&copy; BRIEDGE CORPORATION</span>
+    </div>
+  </div>
+  <div class="container" style="margin-top:18px;font-size:11px;color:rgba(255,255,255,.45)">※ 掲載写真はビジュアル確認用の仮画像（Unsplash・人物なし）です。本番は正規ライセンス／ブライエッジの実写真に差し替えます。</div>
+</footer>
+
+</body>
+</html>
