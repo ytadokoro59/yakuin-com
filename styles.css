@@ -76,13 +76,16 @@ section{padding:88px 0}
 
 /* ---------- Hero（診断結果カードが主役） ---------- */
 .hero{background:radial-gradient(120% 140% at 80% 0%, #17314f 0%, var(--navy-deep) 60%);color:#fff;overflow:hidden}
-.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;min-height:640px;padding-top:64px;padding-bottom:64px}
+.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:20px 48px;align-items:center;min-height:600px;padding-top:56px;padding-bottom:56px;grid-template-areas:"head card" "body card"}
+.hero-head{grid-area:head;align-self:end}
+.hero-body{grid-area:body;align-self:start}
+.hero-card{grid-area:card;align-self:center}
 .hero h1{color:#fff;font-size:40px;line-height:1.55;font-weight:600;margin-bottom:22px}
 .hero h1 em{font-style:normal;color:var(--gold)}
 .hero p{color:rgba(255,255,255,.82);font-size:15.5px;margin-bottom:30px;max-width:500px}
 .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .hero .microtrust{margin-top:22px;font-size:12.5px;color:rgba(255,255,255,.6);letter-spacing:.03em}
-@media(max-width:860px){.hero .container{grid-template-columns:1fr;gap:36px;min-height:0}.hero h1{font-size:31px}}
+@media(max-width:860px){.hero .container{grid-template-columns:1fr;grid-template-areas:"head" "card" "body";gap:22px;min-height:0;padding-top:30px;padding-bottom:42px}.hero h1{font-size:29px}.hero-head,.hero-body{align-self:auto}.hero-card{align-self:stretch}.result-card{max-width:none;margin:0}}
 
 /* ---------- Result card（ヒーローの見せ場） ---------- */
 .result-card{background:#fff;border-radius:16px;box-shadow:0 34px 70px rgba(0,0,0,.34);padding:26px 26px 22px;width:100%;max-width:440px;margin-left:auto;color:var(--ink)}
