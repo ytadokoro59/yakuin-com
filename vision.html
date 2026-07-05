@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>役員.com｜将来イメージ（Phase 2）モック</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#152A44;--navy-deep:#0E2036;--green:#274A3F;--green-soft:#3C6353;--gold:#B79A5E;--gold-soft:#C9B07A;--bg:#FBFAF7;--surface:#fff;--surface-2:#F4F1EB;--surface-3:#EEF2F0;--ink:#1E2530;--ink-soft:#57606B;--ink-mute:#8A9199;--line:#E6E2D9;--line-soft:#EFECE4;--serif:"Noto Serif JP",serif;--sans:"Noto Sans JP",sans-serif;--eng:"Jost",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.9;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.container{max-width:1140px;margin:0 auto;padding:0 28px}
+.narrow{max-width:820px;margin:0 auto;padding:0 28px}
+.kicker{font-family:var(--eng);font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--green-soft);font-weight:500;display:inline-block;margin-bottom:14px}
+.kicker.on-dark{color:var(--gold)}
+h1,h2,h3,h4{font-family:var(--serif);color:var(--navy);font-weight:600;line-height:1.5}
+.h-sec{font-size:30px;margin-bottom:10px}.h-sec.on-dark{color:#fff}
+.lead{font-size:15.5px;color:var(--ink-soft)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:15px;font-weight:500;padding:14px 28px;border-radius:6px;border:1px solid transparent;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--green)}
+.btn-gold{background:var(--gold);color:#241c08}.btn-gold:hover{background:var(--gold-soft)}
+.btn-ghost{background:transparent;color:var(--navy);border:1px solid var(--navy)}.btn-ghost.on-dark{color:#fff;border-color:rgba(255,255,255,.55)}
+.btn .arw{font-family:var(--eng)}
+/* mock banner */
+.mockbar{background:#8A6A22;color:#fff;text-align:center;font-size:12.5px;padding:7px 16px;letter-spacing:.02em}
+.mockbar b{color:#FBE9BE}
+/* header */
+.hd{position:sticky;top:0;z-index:50;background:rgba(14,32,54,.97);backdrop-filter:blur(8px);color:#fff}
+.hd .container{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;flex-direction:column;line-height:1.15}
+.brand .name{font-family:var(--serif);font-size:21px;font-weight:600;color:#fff}
+.brand .en{font-family:var(--eng);font-size:9px;letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:22px}
+.nav a{font-size:13.5px;color:rgba(255,255,255,.82)}.nav a:hover{color:#fff}
+.nav .btn{padding:9px 18px;font-size:13px}
+@media(max-width:960px){.nav a:not(.btn){display:none}}
+section{padding:80px 0}
+.sec-head{margin-bottom:40px}.sec-head.center{text-align:center}
+.bg-soft{background:var(--surface-2)}.bg-surface{background:#fff}
+.tag-fake{display:inline-block;font-size:10px;font-weight:700;color:#8A6A22;background:#FBF0D5;border:1px solid #EAD9A6;border-radius:3px;padding:1px 7px;margin-left:6px;vertical-align:middle}
+/* hero */
+.vhero{background:radial-gradient(120% 140% at 85% 0%,#17314f,#0E2036 60%);color:#fff;overflow:hidden}
+.vhero .container{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;min-height:600px;padding:56px 28px}
+.vhero h1{color:#fff;font-size:38px;line-height:1.5;margin-bottom:20px}
+.vhero h1 em{font-style:normal;color:var(--gold)}
+.vhero p{color:rgba(255,255,255,.82);font-size:15px;margin-bottom:26px;max-width:480px}
+.vhero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.vhero .micro{margin-top:20px;font-size:12px;color:rgba(255,255,255,.55)}
+.vstage{position:relative}
+.kv{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.kv img{width:100%;height:100%;object-fit:cover;object-position:60% center}
+.kv .kvnote{position:absolute;left:10px;top:10px;z-index:2;background:rgba(21,42,68,.82);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:4px;font-size:10px;padding:3px 9px;line-height:1.4;max-width:220px}
+.kv .kvnote b{color:#FBE9BE}
+.rcard{position:relative;margin:-64px 18px 0 auto;width:calc(100% - 40px);max-width:360px;background:#fff;border-radius:14px;box-shadow:0 24px 50px rgba(0,0,0,.3);padding:18px 20px;color:var(--ink)}
+.rc-h{display:flex;justify-content:space-between;align-items:center}
+.rc-h .l{font-family:var(--eng);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-soft)}
+.rc-h .s{font-size:10px;font-weight:700;color:#8A6A22;background:#FBF0D5;border:1px solid #EAD9A6;border-radius:3px;padding:1px 6px}
+.gauge{position:relative;width:132px;height:132px;margin:6px auto 2px}
+.gauge .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge .pct{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--navy);line-height:1}
+.gauge .sc{font-size:10.5px;color:var(--ink-mute);margin-top:3px}
+.rc-bars .b{margin-bottom:6px}
+.rc-bars .bn{font-size:10.5px;color:var(--ink);display:flex;justify-content:space-between;margin-bottom:2px}
+.rc-bars .bt{height:5px;background:var(--surface-2);border-radius:3px}.rc-bars .bt>div{height:100%;background:var(--green-soft);border-radius:3px}
+@media(max-width:860px){.vhero .container{grid-template-columns:1fr;gap:26px;min-height:0;padding-top:34px}.vhero h1{font-size:29px}.rcard{margin:-48px auto 0;max-width:340px}}
+/* feat */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}@media(max-width:820px){.feat{grid-template-columns:1fr}}
+.feat .i{background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px 24px;text-align:center}
+.feat .ic{width:56px;height:56px;border-radius:50%;background:var(--surface-3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:var(--green)}
+.feat .ic svg{width:25px;height:25px}
+.feat h4{font-size:17px;margin-bottom:6px}.feat p{font-size:13.5px;color:var(--ink-soft)}
+/* big nums */
+.bignums{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}@media(max-width:820px){.bignums{grid-template-columns:1fr 1fr}}
+.bn2{text-align:center}.bn2 .n{font-family:var(--serif);font-size:40px;font-weight:700;color:var(--navy)}.bn2 .n small{font-size:20px}.bn2 .l{font-size:12.5px;color:var(--ink-soft);margin-top:4px}
+/* rank */
+.rank{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px}
+.rank .rh{font-family:var(--serif);font-size:16px;color:var(--navy);font-weight:600;margin-bottom:14px}
+.rr{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line-soft)}
+.rr:first-of-type{border-top:none}.rr .k{font-family:var(--eng);color:var(--gold);font-weight:500}.rr .l{font-size:13px}
+.rr .b{grid-column:2/4;height:5px;background:var(--surface-2);border-radius:3px;margin-top:2px}.rr .b>div{height:100%;background:var(--green-soft);border-radius:3px}.rr .v{font-size:12.5px;color:var(--ink-soft)}
+/* grid cards */
+.grid{display:grid;gap:22px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:820px){.g3,.g2{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(21,42,68,.08)}
+.thumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.thumb.v1{background:linear-gradient(135deg,#1B3350,#274A3F)}.thumb.v2{background:linear-gradient(135deg,#22405c,#37584a)}.thumb.v3{background:linear-gradient(135deg,#243b57,#4a5a3e)}.thumb.v4{background:linear-gradient(135deg,#2a3b56,#5a4a2e)}
+.thumb::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:24px 24px}
+.thumb svg{width:40px;height:40px;color:rgba(255,255,255,.6);position:relative;z-index:1}
+.thumb .cat{position:absolute;top:11px;left:13px;z-index:1;font-family:var(--eng);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.card .bd{padding:18px 20px 22px}.card .bd .t{font-family:var(--eng);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-soft)}
+.card h3{font-size:16px;line-height:1.55;margin:8px 0 6px;color:var(--navy)}.card .m{font-size:12px;color:var(--ink-mute)}
+/* diagnosis showcase */
+.dshow{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}@media(max-width:820px){.dshow{grid-template-columns:1fr}}
+.dcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 20px 44px rgba(21,42,68,.08)}
+.bench{margin-top:10px}.bench .row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.bench .nm{font-size:12px;width:120px;color:var(--ink)}.bench .bar{flex:1;height:8px;background:var(--surface-2);border-radius:4px;position:relative}
+.bench .bar>div{height:100%;background:var(--navy);border-radius:4px}.bench .bar .avg{position:absolute;top:-3px;width:2px;height:14px;background:#c0392b}.bench .pv{font-size:12px;color:var(--ink-soft);width:32px;text-align:right}
+/* mypage / member */
+.member{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}@media(max-width:820px){.member{grid-template-columns:1fr}}
+.mp{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 16px 36px rgba(21,42,68,.07)}
+.mp .row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:13px}.mp .row:last-child{border:none}
+.mp .badge{font-size:11px;background:var(--surface-3);color:var(--green);border-radius:20px;padding:3px 10px}
+/* mailmag */
+.mailform{display:flex;gap:10px;flex-wrap:wrap;max-width:520px;margin:0 auto}
+.mailform input{flex:1;min-width:220px;padding:13px 14px;border:1px solid var(--line);border-radius:8px;font-family:var(--sans);font-size:14px}
+/* enterprise */
+.ent{background:var(--navy-deep);color:#fff;border-radius:16px;padding:44px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}@media(max-width:820px){.ent{grid-template-columns:1fr;padding:30px}}
+.ent h3{color:#fff;font-size:22px;margin-bottom:10px}.ent p{color:rgba(255,255,255,.78);font-size:14px}
+.ent ul{list-style:none;margin-top:14px}.ent li{font-size:13.5px;color:rgba(255,255,255,.85);padding:4px 0 4px 20px;position:relative}.ent li::before{content:"";position:absolute;left:2px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+/* faq */
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+.faq summary{list-style:none;cursor:pointer;padding:16px 20px;font-size:14.5px;font-weight:500;color:var(--navy);display:flex;justify-content:space-between;gap:14px}
+.faq summary::-webkit-details-marker{display:none}.faq summary .mk{font-family:var(--eng);color:var(--gold)}
+.faq .a{padding:0 20px 18px 42px;font-size:13.5px;color:var(--ink-soft)}
+/* cta / footer */
+.ctab{background:var(--green);color:#fff;text-align:center}.ctab h2{color:#fff;font-size:26px;margin-bottom:12px}.ctab p{color:rgba(255,255,255,.85);margin-bottom:22px}
+.ft{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:52px 0 28px;font-size:13px}
+.ft .top{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap;margin-bottom:30px}
+.ft .cols{display:flex;gap:48px;flex-wrap:wrap}.ft .col a{display:block;color:rgba(255,255,255,.7);padding:3px 0;font-size:13px}.ft .col a:hover{color:#fff}
+.ft .col .ch{font-family:var(--eng);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.ft .legal{border-top:1px solid rgba(255,255,255,.12);padding-top:18px;font-size:11.5px;color:rgba(255,255,255,.5)}
+.sticky{position:fixed;right:20px;bottom:20px;z-index:60;box-shadow:0 12px 30px rgba(21,42,68,.32)}
+.mt40{margin-top:40px}.center{text-align:center}
+</style>
+</head>
+<body>
+
+<div class="mockbar">これは <b>将来イメージ（Phase 2）のモック</b> です ｜ テキスト・画像・データはすべて仮。実データ・実写真・許可番号は後差し替え。</div>
+
+<header class="hd">
+  <div class="container">
+    <a class="brand" href="#"><span class="name">役員.com</span><span class="en">Executive Career Research</span></a>
+    <nav class="nav">
+      <a href="#research">調査データ</a><a href="#reports">調査レポート</a><a href="#insights">コラム</a><a href="#webinar">ウェビナー</a><a href="#enterprise">企業の方へ</a>
+      <a class="btn btn-gold" href="#">無料で診断</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="vhero">
+  <div class="container">
+    <div>
+      <span class="kicker on-dark">Executive Career Research</span>
+      <h1>あなたは役員候補として、<br><em>いまどの位置</em>にいるか。</h1>
+      <p>次世代役員候補のキャリア実態を、調査とデータで。診断・調査レポート・コラム・キャリア相談まで、役員を目指す人のための研究メディア。</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="#">無料で役員候補度を診断する <span class="arw">&rsaquo;</span></a>
+        <a class="btn btn-ghost on-dark" href="#research">調査を見る</a>
+      </div>
+      <p class="micro">運営：ブライエッジ株式会社（ハイクラス人材紹介）</p>
+    </div>
+    <div class="vstage">
+      <div class="kv">
+        <img src="https://images.unsplash.com/photo-1588571907856-a68e5cc3f5b5?w=1100&q=72&auto=format&fit=crop" alt="ビジネスパーソン（仮）">
+        <div class="kvnote">仮画像｜<b>本番KV想定：Adobe Stock #760368551</b>（購入後差し替え）</div>
+      </div>
+      <div class="rcard">
+        <div class="rc-h"><span class="l">Diagnosis Result</span><span class="s">結果サンプル</span></div>
+        <div style="text-align:center;font-size:12px;color:var(--ink-soft);margin-top:6px">あなたの役員候補度</div>
+        <div class="gauge">
+          <svg viewBox="0 0 132 132" width="132" height="132"><circle cx="66" cy="66" r="56" fill="none" stroke="#EFECE4" stroke-width="10"/><circle cx="66" cy="66" r="56" fill="none" stroke="#B79A5E" stroke-width="10" stroke-linecap="round" stroke-dasharray="351.8" stroke-dashoffset="63.3" transform="rotate(-90 66 66)"/></svg>
+          <div class="c"><div class="pct">上位 18<span style="font-size:14px">%</span></div><div class="sc">スコア 82 / 100</div></div>
+        </div>
+        <div class="rc-bars">
+          <div class="b"><div class="bn"><span>事業・PL責任</span><span>80</span></div><div class="bt"><div style="width:80%"></div></div></div>
+          <div class="b"><div class="bn"><span>経営への近さ</span><span>75</span></div><div class="bt"><div style="width:75%"></div></div></div>
+          <div class="b"><div class="bn"><span>組織マネジメント</span><span>68</span></div><div class="bt"><div style="width:68%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- できること -->
+<section class="bg-surface">
+  <div class="container">
+    <div class="sec-head center"><span class="kicker">Why 役員.com</span><h2 class="h-sec">役員.comでできること</h2></div>
+    <div class="feat">
+      <div class="i"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div><h4>役員候補度を診断する</h4><p>10問でスコア・レーダー・ベンチマークを可視化。</p></div>
+      <div class="i"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h4>調査データを読む</h4><p>役員に到達した人の経験・キャリアパスをデータで。</p></div>
+      <div class="i"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a3 3 0 0 1-3 3H8l-5 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3z"/></svg></div><h4>キャリアを相談する</h4><p>非公開のCxO・役員案件をブライエッジに相談。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 調査データ -->
+<section id="research" class="bg-soft">
+  <div class="container">
+    <div class="sec-head center"><span class="kicker">Research</span><h2 class="h-sec">データで見る、役員への道</h2><p class="lead">数値はすべて仮</p></div>
+    <div class="bignums" style="margin-bottom:40px">
+      <div class="bn2"><div class="n">312<small>人</small></div><div class="l">調査協力 <span class="tag-fake">仮</span></div></div>
+      <div class="bn2"><div class="n">73<small>%</small></div><div class="l">30代で事業責任 <span class="tag-fake">仮</span></div></div>
+      <div class="bn2"><div class="n">2.4<small>社</small></div><div class="l">平均経験社数 <span class="tag-fake">仮</span></div></div>
+      <div class="bn2"><div class="n">61<small>%</small></div><div class="l">PL責任あり <span class="tag-fake">仮</span></div></div>
+    </div>
+    <div class="grid g2">
+      <div class="rank"><div class="rh">役員到達者が積んだ経験 TOP5 <span class="tag-fake">仮</span></div>
+        <div class="rr"><span class="k">1</span><span class="l">事業責任（PL）</span><span class="v">73%</span><span class="b"><div style="width:73%"></div></span></div>
+        <div class="rr"><span class="k">2</span><span class="l">組織マネジメント</span><span class="v">68%</span><span class="b"><div style="width:68%"></div></span></div>
+        <div class="rr"><span class="k">3</span><span class="l">経営会議参画</span><span class="v">54%</span><span class="b"><div style="width:54%"></div></span></div>
+        <div class="rr"><span class="k">4</span><span class="l">新規事業立ち上げ</span><span class="v">49%</span><span class="b"><div style="width:49%"></div></span></div>
+        <div class="rr"><span class="k">5</span><span class="l">採用・組織づくり</span><span class="v">41%</span><span class="b"><div style="width:41%"></div></span></div>
+      </div>
+      <div class="rank"><div class="rh">役員候補度が高い業界 <span class="tag-fake">仮</span></div>
+        <div class="rr"><span class="k">1</span><span class="l">IT・SaaS</span><span class="v">71</span><span class="b"><div style="width:71%"></div></span></div>
+        <div class="rr"><span class="k">2</span><span class="l">コンサル</span><span class="v">66</span><span class="b"><div style="width:66%"></div></span></div>
+        <div class="rr"><span class="k">3</span><span class="l">金融</span><span class="v">61</span><span class="b"><div style="width:61%"></div></span></div>
+        <div class="rr"><span class="k">4</span><span class="l">メーカー</span><span class="v">55</span><span class="b"><div style="width:55%"></div></span></div>
+        <div class="rr"><span class="k">5</span><span class="l">商社・流通</span><span class="v">52</span><span class="b"><div style="width:52%"></div></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 診断ショーケース -->
+<section class="bg-surface">
+  <div class="container dshow">
+    <div>
+      <span class="kicker">Diagnosis</span>
+      <h2 class="h-sec">診断すると、同職位の中の<br>あなたの位置がわかる。</h2>
+      <p class="lead">Phase 2ではベンチマークが実データで機能。同職位・同年代の分布と比較して、強みとあと一歩がわかります。</p>
+      <a class="btn btn-primary mt40" href="#">診断をはじめる <span class="arw">&rsaquo;</span></a>
+    </div>
+    <div class="dcard">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-family:var(--eng);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-soft)">Benchmark</span><span class="tag-fake">完成イメージ・仮</span></div>
+      <div style="font-size:13px;color:var(--ink-soft);margin-bottom:10px">事業部長クラス・30代後半（N=312）との比較</div>
+      <div class="bench">
+        <div class="row"><span class="nm">事業・PL責任</span><span class="bar"><div style="width:80%"></div><span class="avg" style="left:55%"></span></span><span class="pv">80</span></div>
+        <div class="row"><span class="nm">経営への近さ</span><span class="bar"><div style="width:75%"></div><span class="avg" style="left:50%"></span></span><span class="pv">75</span></div>
+        <div class="row"><span class="nm">組織マネジメント</span><span class="bar"><div style="width:68%"></div><span class="avg" style="left:52%"></span></span><span class="pv">68</span></div>
+        <div class="row"><span class="nm">事業フェーズ経験</span><span class="bar"><div style="width:85%"></div><span class="avg" style="left:48%"></span></span><span class="pv">85</span></div>
+      </div>
+      <div style="font-size:11px;color:var(--ink-mute);margin-top:8px"><span style="color:#c0392b">|</span> = 同職位の平均</div>
+    </div>
+  </div>
+</section>
+
+<!-- 調査レポート一覧 -->
+<section id="reports" class="bg-soft">
+  <div class="container">
+    <div class="sec-head center"><span class="kicker">Reports</span><h2 class="h-sec">調査レポート <span class="tag-fake">仮</span></h2><p class="lead">独自調査をレポート化。会員は全文DL可（イメージ）。</p></div>
+    <div class="grid g3">
+      <a class="card" href="#"><div class="thumb v1"><span class="cat">Report</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><div class="bd"><span class="t">Survey</span><h3>次世代役員候補300人調査 2026</h3><div class="m">全32P ・ 会員限定DL</div></div></a>
+      <a class="card" href="#"><div class="thumb v2"><span class="cat">Report</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><div class="bd"><span class="t">Survey</span><h3>CxO直下人材のキャリア意識調査</h3><div class="m">全24P ・ 会員限定DL</div></div></a>
+      <a class="card" href="#"><div class="thumb v4"><span class="cat">Report</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l8 4v5c0 5-3.4 7.5-8 9-4.6-1.5-8-4-8-9V7z"/></svg></div><div class="bd"><span class="t">Survey</span><h3>役員報酬・ストックオプション実態</h3><div class="m">全28P ・ 会員限定DL</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- コラム一覧 -->
+<section id="insights" class="bg-surface">
+  <div class="container">
+    <div class="sec-head center"><span class="kicker">Insights</span><h2 class="h-sec">コラム <span class="tag-fake">仮</span></h2><p class="lead">紹介現場の知見をもとにした記事（5〜10本のイメージ）。</p></div>
+    <div class="grid g3">
+      <a class="card" href="#"><div class="thumb v1"><span class="cat">On-site</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></div><div class="bd"><span class="t">On-site Knowledge</span><h3>IPO準備企業のCFOに求められる経験</h3><div class="m">ブライエッジ</div></div></a>
+      <a class="card" href="#"><div class="thumb v2"><span class="cat">On-site</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><div class="bd"><span class="t">On-site Knowledge</span><h3>スタートアップCxOで活躍する人の差</h3><div class="m">ブライエッジ</div></div></a>
+      <a class="card" href="#"><div class="thumb v3"><span class="cat">Basics</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l8 4v5c0 5-3.4 7.5-8 9-4.6-1.5-8-4-8-9V7z"/></svg></div><div class="bd"><span class="t">Basics</span><h3>執行役員と取締役は何が違うのか</h3><div class="m">ブライエッジ</div></div></a>
+      <a class="card" href="#"><div class="thumb v4"><span class="cat">Career</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1z"/></svg></div><div class="bd"><span class="t">Career</span><h3>部長から役員に上がる人の共通点</h3><div class="m">ブライエッジ</div></div></a>
+      <a class="card" href="#"><div class="thumb v1"><span class="cat">Market</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><div class="bd"><span class="t">Market</span><h3>成長企業の役員報酬のリアル</h3><div class="m">ブライエッジ</div></div></a>
+      <a class="card" href="#"><div class="thumb v2"><span class="cat">Career</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 15a3 3 0 0 1-3 3H8l-5 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3z"/></svg></div><div class="bd"><span class="t">Career</span><h3>経営会議で評価される人の条件</h3><div class="m">ブライエッジ</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ウェビナー -->
+<section id="webinar" class="bg-soft">
+  <div class="container">
+    <div class="sec-head center"><span class="kicker">Events</span><h2 class="h-sec">ウェビナー・イベント <span class="tag-fake">仮</span></h2></div>
+    <div class="grid g3">
+      <a class="card" href="#"><div class="thumb v3"><span class="cat">Webinar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="14" height="12" rx="2"/><path d="M17 9l4-2v10l-4-2"/></svg></div><div class="bd"><span class="t">2026.08.20</span><h3>部長から役員になるキャリア戦略</h3><div class="m">オンライン ・ 参加登録</div></div></a>
+      <a class="card" href="#"><div class="thumb v4"><span class="cat">Webinar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="14" height="12" rx="2"/><path d="M17 9l4-2v10l-4-2"/></svg></div><div class="bd"><span class="t">2026.09.10</span><h3>現役役員に聞く、役員になる前にやったこと</h3><div class="m">オンライン ・ 参加登録</div></div></a>
+      <a class="card" href="#"><div class="thumb v1"><span class="cat">Event</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2v4M16 2v4M3 9h18M4 6h16v14H4z"/></svg></div><div class="bd"><span class="t">2026.10.05</span><h3>IPO準備企業の役員キャリア</h3><div class="m">会場＋オンライン</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- 会員/マイページ -->
+<section class="bg-surface">
+  <div class="container member">
+    <div>
+      <span class="kicker">Members</span>
+      <h2 class="h-sec">会員になると、<br>キャリアの現在地が蓄積される。</h2>
+      <p class="lead">診断履歴・ベンチマークの推移、限定レポートのDL、非公開案件の通知（イメージ）。差し出すほど、返ってくる情報が深くなる。</p>
+      <a class="btn btn-primary mt40" href="#">無料会員登録 <span class="arw">&rsaquo;</span></a>
+    </div>
+    <div class="mp">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b style="font-family:var(--serif);color:var(--navy)">マイページ</b><span class="tag-fake">イメージ・仮</span></div>
+      <div class="row"><span>役員候補度</span><span class="badge">上位 18%</span></div>
+      <div class="row"><span>診断履歴</span><span>3回（推移グラフ）</span></div>
+      <div class="row"><span>DLしたレポート</span><span>2件</span></div>
+      <div class="row"><span>非公開案件の通知</span><span class="badge">2件 新着</span></div>
+      <div class="row"><span>キャリア相談</span><span>予約する ›</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- メルマガ -->
+<section class="bg-soft">
+  <div class="narrow center">
+    <span class="kicker">Newsletter</span>
+    <h2 class="h-sec">役員キャリアの調査・知見を、月1でお届け <span class="tag-fake">仮</span></h2>
+    <p class="lead" style="margin-bottom:22px">最新の調査結果・コラム・ウェビナー情報をメールで。</p>
+    <div class="mailform"><input type="email" placeholder="name@company.com"><a class="btn btn-gold" href="#">登録する</a></div>
+  </div>
+</section>
+
+<!-- 企業向け -->
+<section id="enterprise" class="bg-surface">
+  <div class="container">
+    <div class="ent">
+      <div>
+        <span class="kicker on-dark">For Companies</span>
+        <h3>経営人材を採用したい企業の方へ <span class="tag-fake" style="background:#3a3420;color:#FBE9BE;border-color:#5a5030">仮</span></h3>
+        <p>役員.comの候補者プールと調査データを活かした、経営人材の採用支援・スポンサー・共同調査（イメージ）。</p>
+        <ul><li>役員・CxO候補の人材紹介</li><li>調査データの提供・共同調査</li><li>採用ブランディング／スポンサー</li></ul>
+      </div>
+      <div style="text-align:center"><a class="btn btn-gold" href="#">企業の方はこちら <span class="arw">&rsaquo;</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-soft">
+  <div class="narrow">
+    <div class="sec-head center"><span class="kicker">FAQ</span><h2 class="h-sec">よくあるご質問</h2></div>
+    <div class="faq">
+      <details open><summary><span><span class="mk">Q</span> 診断は無料ですか？</span><span>+</span></summary><div class="a">はい、無料です。登録で結果とベンチマークをご覧いただけます。</div></details>
+      <details><summary><span><span class="mk">Q</span> 今すぐ転職しなくても利用できますか？</span><span>+</span></summary><div class="a">はい。情報収集・中長期のご相談から歓迎しています。</div></details>
+      <details><summary><span><span class="mk">Q</span> 勤務先に知られませんか？</span><span>+</span></summary><div class="a">回答は統計化・匿名化のうえ活用し、ご本人の同意なく連絡することはありません。</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="bg-surface">
+  <div class="narrow center">
+    <span class="kicker">About</span>
+    <h2 class="h-sec">運営：ブライエッジ株式会社</h2>
+    <p class="lead">IT・SaaS・成長企業の経営者・採用責任者と向き合うハイクラス人材紹介。<span class="tag-fake">会社概要・許可番号は本番差し替え</span></p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ctab"><div class="narrow"><span class="kicker on-dark">Get Started</span><h2>まずは、あなたの役員候補度を知ることから。</h2><p>今すぐの転職でなくても大丈夫。</p><a class="btn btn-gold" href="#">無料で診断する <span class="arw">&rsaquo;</span></a></div></section>
+
+<!-- Footer -->
+<footer class="ft">
+  <div class="container">
+    <div class="top">
+      <div class="brand"><span class="name">役員.com</span><span class="en">Executive Career Research</span></div>
+      <div class="cols">
+        <div class="col"><div class="ch">Contents</div><a href="#research">調査データ</a><a href="#reports">調査レポート</a><a href="#insights">コラム</a><a href="#webinar">ウェビナー</a></div>
+        <div class="col"><div class="ch">Service</div><a href="#">役員候補度診断</a><a href="#">会員登録</a><a href="#">キャリア相談</a><a href="#enterprise">企業の方へ</a></div>
+        <div class="col"><div class="ch">About</div><a href="#">運営会社</a><a href="#">プライバシーポリシー</a><a href="#">お問い合わせ</a></div>
+      </div>
+    </div>
+    <div class="legal">運営：ブライエッジ株式会社 ／ 有料職業紹介事業許可 ◯◯-◯◯◯◯◯◯（仮）　|　&copy; BRIEDGE CORPORATION　|　本ページは将来イメージ（Phase 2）モックです。</div>
+  </div>
+</footer>
+
+<a class="btn btn-gold sticky" href="#">無料で診断する <span class="arw">&rsaquo;</span></a>
+
+</body>
+</html>
