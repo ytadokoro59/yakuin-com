@@ -1,221 +1,423 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>役員候補度診断 | 役員.com</title>
-<meta name="description" content="3分・10問で、あなたの役員候補度をスコアとレーダーで診断します。">
+<meta name="robots" content="noindex,nofollow"><!-- 先方確認中のため。本公開時にこの行を削除 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MS8LC34M');</script>
+<!-- End Google Tag Manager -->
+<title>役員候補度診断｜18問に答える</title>
+<meta name="description" content="18問・約5分で、あなたの役員候補度を5軸のスコアとレーダーで診断。役員に到達した人との差分と、次に埋めるべき経験まで示します。">
+<link rel="canonical" href="https://yakuin-shindan.com/shindan.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="役員候補度診断">
+<meta property="og:title" content="役員候補度診断（無料・約5分）">
+<meta property="og:description" content="18問・約5分で、あなたの役員候補度を5つの軸で診断。役員の目標プロファイルとの差と、次に埋めるべき経験までその場で表示。会員登録不要・無料。運営：ブライエッジ株式会社">
+<meta property="og:url" content="https://yakuin-shindan.com/shindan.html">
+<meta property="og:image" content="https://yakuin-shindan.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B2A4A'/%3E%3Cpolygon points='32,10 52,25 44,50 20,50 12,25' fill='none' stroke='%23F2711C' stroke-width='4'/%3E%3Cpolygon points='32,20 44,29 40,43 24,43 20,29' fill='%231F6FD1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  .diag-wrap{max-width:760px;margin:0 auto;padding:40px 24px 80px}
-  .provnote{background:#FDF8EC;border:1px dashed #D9B24A;border-radius:var(--radius);padding:12px 16px;font-size:12.5px;color:#8A6A22;margin-bottom:26px;text-align:center}
-  .panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:40px 38px;box-shadow:0 10px 30px rgba(21,42,68,.05)}
-  @media(max-width:600px){.panel{padding:28px 20px}}
-  .screen{display:none}.screen.active{display:block}
-  .d-center{text-align:center}
-  .d-hero-en{font-family:var(--eng);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--green-soft);font-weight:500}
-  .d-title{font-family:var(--serif);font-size:27px;color:var(--navy);font-weight:600;margin:12px 0 8px}
-  .d-sub{font-size:14px;color:var(--ink-soft);margin-bottom:22px}
-  .d-meta{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--ink-soft);margin-bottom:26px}
-  .d-meta b{color:var(--navy)}
-  .prog-head{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-mute);margin-bottom:7px}
-  .prog{height:5px;background:var(--surface-2);border-radius:3px;overflow:hidden;margin-bottom:28px}
-  .prog>div{height:100%;background:var(--gold);width:0;transition:width .35s}
-  .q-text{font-family:var(--serif);font-size:20px;color:var(--navy);font-weight:600;margin-bottom:20px;line-height:1.6}
-  .opts{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
-  .opt{border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;font-size:15px;color:var(--ink);cursor:pointer;transition:.15s;display:flex;justify-content:space-between;align-items:center;background:#fff}
-  .opt:hover{border-color:var(--green-soft);background:#FAFBFA}
-  .opt.sel{border-color:var(--navy);background:#F4F7FA;color:var(--navy);font-weight:500}
-  .opt .ck{opacity:0;color:var(--green-soft);font-weight:700}
-  .opt.sel .ck{opacity:1}
-  .nav-row{display:flex;justify-content:space-between;align-items:center}
-  .link-btn{background:none;border:none;color:var(--ink-mute);font-size:14px;cursor:pointer;font-family:var(--sans)}
-  .link-btn:hover{color:var(--navy)}
-  .gate{display:grid;grid-template-columns:1fr 1.15fr;gap:26px;align-items:center}
-  @media(max-width:600px){.gate{grid-template-columns:1fr}}
-  .gate .prev{background:var(--navy-deep);border-radius:6px;padding:26px;text-align:center;color:#fff}
-  .gate .prev .l{font-size:12px;color:rgba(255,255,255,.7)}
-  .gate .prev .blur{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--gold);filter:blur(7px);margin:6px 0}
-  .gate .prev .lock{font-size:11px;color:rgba(255,255,255,.7);margin-top:8px}
-  input[type=email]{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:var(--radius);font-size:15px;font-family:var(--sans);margin-bottom:14px}
-  input[type=email]:focus{outline:none;border-color:var(--navy)}
-  .consent{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--ink-soft);margin-bottom:9px}
-  .consent input{margin-top:4px}
-  .btn-full{width:100%;justify-content:center}
-  .score-hero{text-align:center;padding:26px;background:linear-gradient(180deg,#fff,#F4F7FA);border:1px solid var(--line);border-radius:6px;margin-bottom:22px}
-  .score-hero .l{font-size:13px;color:var(--ink-soft)}
-  .score-hero .big{font-family:var(--serif);font-size:46px;font-weight:700;color:var(--navy);line-height:1.15}
-  .score-hero .co{font-size:12.5px;color:var(--ink-mute)}
-  .r-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
-  @media(max-width:560px){.r-grid{grid-template-columns:1fr}}
-  .r-panel{background:var(--surface-2);border-radius:6px;padding:18px}
-  .r-panel .h{font-family:var(--eng);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-soft);margin-bottom:12px}
-  .bar{margin-bottom:11px}
-  .bar .n{font-size:12px;color:var(--ink);display:flex;justify-content:space-between;margin-bottom:4px}
-  .bar .t{height:6px;background:#E4E0D7;border-radius:3px}
-  .bar .t>div{height:100%;background:var(--navy);border-radius:3px}
-  .cmt{background:#F4F7FA;border-radius:6px;padding:16px 18px;font-size:14px;color:var(--ink-soft);margin-bottom:22px;line-height:1.8}
-  .cmt b{color:var(--navy)}
-  .cta2{display:flex;gap:12px}@media(max-width:560px){.cta2{flex-direction:column}}
+:root{
+  --navy:#0B2A4A;--navy2:#123C68;--blue:#1F6FD1;--sky:#EAF3FB;--sky2:#D6E8F7;
+  --orange:#F2711C;--orange2:#D85E0F;--yellow:#FFF27A;
+  --ink:#1D2A36;--ink-soft:#4B5A68;--ink-mute:#7C8894;--line:#DCE3EA;--bg:#F4F7FA;--surface:#fff;--surface-2:#EEF2F6;--surface-3:#F4F7FA;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.8;font-size:15px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{color:var(--navy);font-weight:700;margin:0;line-height:1.4}
+.hd{background:#fff;border-bottom:1px solid var(--line);padding:0 18px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:40}
+.hd .lg{font-weight:900;font-size:19px;color:var(--navy);text-decoration:none}
+.hd .lg small{font-size:10.5px;font-weight:500;color:var(--ink-mute);margin-left:8px}
+.wrap{max-width:720px;margin:0 auto;padding:22px 16px 80px}
+.screen{display:none;animation:f .25s ease}
+.screen.active{display:block}
+@keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.center{text-align:center}
+.kick{display:inline-block;background:var(--navy);color:#fff;font-size:12.5px;font-weight:700;padding:4px 12px;border-radius:4px}
+.title{font-size:24px;color:var(--navy);margin:10px 0 6px;line-height:1.4;font-weight:700}
+.sub{color:var(--ink-soft);font-size:14.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);font-size:16px;font-weight:700;padding:15px 30px;border-radius:999px;border:none;cursor:pointer;transition:.15s}
+.btn-primary{background:var(--orange);color:#fff;box-shadow:0 5px 0 var(--orange2)}
+.btn-primary:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--orange2)}
+.btn-primary:disabled{opacity:.35;transform:none;cursor:default}
+.btn-ghost{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.arw{font-size:18px}
+.link-btn{background:none;border:none;color:var(--ink-mute);font-size:14px;cursor:pointer;font-family:var(--sans);text-decoration:underline}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px 20px;margin-top:4px;box-shadow:0 2px 10px rgba(11,42,74,.05)}
+.provnote{display:none}
+.prog-head{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-mute);margin-bottom:6px;font-weight:700}
+.prog{height:8px;background:var(--surface-2);border-radius:4px;overflow:hidden;margin-bottom:20px}
+.prog>div{height:100%;background:var(--blue);width:0;transition:.3s}
+.phase-tag{display:inline-block;font-size:11.5px;color:var(--blue);background:var(--sky);font-weight:700;padding:2px 10px;border-radius:4px;margin-bottom:8px}
+.q-text{font-size:20px;color:var(--navy);margin-bottom:6px;line-height:1.5;font-weight:700}
+.q-help{font-size:12.5px;color:var(--ink-mute);margin-bottom:16px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{border:2px solid var(--line);border-radius:10px;padding:13px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px;transition:.15s;background:#fff}
+.opt:hover{border-color:var(--sky2);background:var(--sky)}
+.opt.sel{border-color:var(--blue);background:var(--sky);font-weight:700;color:var(--navy)}
+.opt .ck{color:var(--blue);opacity:0;font-weight:900}.opt.sel .ck{opacity:1}
+.numwrap{display:flex;align-items:center;gap:10px}
+.numwrap input{flex:1;padding:13px 15px;border:2px solid var(--line);border-radius:10px;font-size:18px;font-family:var(--sans)}
+.numwrap input:focus{outline:none;border-color:var(--blue)}
+.numwrap .unit{font-size:15px;color:var(--ink-soft);min-width:34px}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
+.gate{display:grid;grid-template-columns:1fr 1.2fr;gap:18px;margin-top:16px}
+@media(max-width:640px){.gate{grid-template-columns:1fr}}
+.prev{background:var(--sky);border-radius:10px;padding:20px;text-align:center}
+.prev .l{font-size:12.5px;color:var(--ink-soft)}
+.prev .blur{font-size:26px;font-weight:900;color:var(--navy);filter:blur(7px);margin:8px 0}
+.prev .lock{font-size:12.5px;color:var(--ink-mute)}
+.gate input[type=email],.cform input,.cform select,.cform textarea{width:100%;padding:13px 14px;border:2px solid var(--line);border-radius:10px;font-size:15px;margin-bottom:12px;font-family:var(--sans);background:#fff}
+.gate input:focus,.cform input:focus,.cform select:focus,.cform textarea:focus{outline:none;border-color:var(--blue)}
+.consent{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--ink-soft);margin-bottom:9px;line-height:1.5}
+.tier-hero{text-align:center;padding:24px 18px;border-radius:12px;margin-bottom:16px;background:linear-gradient(180deg,var(--sky),#fff);border:1px solid var(--sky2)}
+.tier-hero .l{font-size:13px;color:var(--ink-soft)}
+.tier-hero .tier{font-size:32px;font-weight:900;margin:4px 0 2px;color:var(--navy)}
+.ptype{margin:2px 0}.ptype .tl{display:none}.ptype #rType{display:inline-block;font-size:13px;font-weight:700;color:var(--blue);background:#fff;border:1px solid var(--sky2);border-radius:999px;padding:2px 12px}
+.tier-hero .band{margin-top:10px;font-size:14px;color:var(--navy)}
+.tier-hero .band b{font-size:22px;font-weight:900}
+.tS{color:#B8860B}.tA{color:var(--blue)}.tB{color:var(--navy)}.tC{color:var(--ink-soft)}
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+@media(max-width:640px){.rgrid{grid-template-columns:1fr}}
+.rpanel{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}
+.rpanel .h{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;border-left:4px solid var(--blue);padding-left:8px}
+.bar{margin-bottom:11px}
+.bar .n{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:3px}
+.bar .t{height:10px;background:var(--surface-2);border-radius:5px;position:relative;overflow:hidden}
+.bar .t .u{height:100%;background:var(--blue);border-radius:5px}
+.bar .avg{position:absolute;top:0;width:3px;height:100%;background:var(--orange)}
+.cmt{background:var(--surface-3);border-radius:12px;padding:16px 18px;font-size:14.5px;line-height:1.8;margin-bottom:14px}
+.cmt .h{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;border-left:4px solid var(--orange);padding-left:8px}
+.cta2{display:flex;gap:10px;margin-top:6px}
+@media(max-width:640px){.cta2{flex-direction:column}}
+.footnote{display:none}
+.introhero{padding:28px 2px 20px;max-width:660px}
+.ih-title{font-size:clamp(27px,6vw,40px);line-height:1.34;color:var(--navy);margin:14px 0 14px;font-weight:700}
+.ih-title em{font-style:normal;color:var(--blue)}
+.ih-sub{color:var(--ink-soft);font-size:15.5px;margin-bottom:24px;max-width:32em}
+.ih-checks{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;font-size:13.5px;font-weight:700;color:var(--navy)}
+.ih-checks span::before{content:"✓";display:inline-block;color:#fff;background:var(--blue);border-radius:50%;width:18px;height:18px;line-height:18px;text-align:center;font-size:11px;margin-right:5px}
+.ih-note{font-size:12px;color:var(--ink-mute);margin-top:22px}
+.ih-ph{border-radius:12px;overflow:hidden;aspect-ratio:16/9;margin-top:22px}
+.ih-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
+.done{text-align:center;padding:20px 0}
+.done .ic{width:64px;height:64px;border-radius:50%;background:var(--sky);color:var(--blue);font-size:30px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS8LC34M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="hd">
+  <a class="lg" href="./">役員候補度診断<small>運営：ブライエッジ株式会社</small></a>
+  <span style="font-size:12px;color:var(--ink-mute)">無料・登録不要</span>
+</div>
 
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html"><span class="name">役員.com</span><span class="en">Executive Career Research</span></a>
-    <nav class="nav">
-      <a href="index.html#research">調査</a>
-      <a href="column.html">コラム</a>
-      <a href="index.html#about">運営</a>
-      <a class="btn btn-primary" href="shindan.html">診断</a>
-    </nav>
-  </div>
-</header>
+<div class="wrap">
+  <!-- INTRO -->
+  <section class="screen active" id="s-intro">
+    <div class="introhero">
+      <span class="kick">課長・部長クラスのための役員候補度診断</span>
+      <h1 class="ih-title">あなたは役員候補として、<br>いま<em>どこにいるのか</em>。</h1>
+      <p class="ih-sub">18問・約5分。5つの軸で役員候補度をスコア化し、役員の目標プロファイルとの差と、次に埋めるべき経験までその場で表示します。</p>
+      <button class="btn btn-primary" onclick="startQ()">無料で診断をはじめる <span class="arw">›</span></button>
+      <div class="ih-checks"><span>無料</span><span>会員登録不要</span><span>結果はその場で表示</span><span>約5分</span></div>
+      <div class="ih-ph"><img src="https://images.unsplash.com/photo-1733348137468-90b917d2ebf1?auto=format&fit=crop&w=900&h=506&q=70" alt=""></div>
+      <p class="ih-note">回答は統計化・匿名化のうえ活用します（個人が特定される形では公開されません）。運営：ブライエッジ株式会社</p>
+    </div>
+  </section>
 
-<div class="diag-wrap">
-  <div class="provnote">この診断の設問・スコアは暫定版です（確定後に差し替え予定）。入口→設問→結果まで実際に動作します。</div>
-  <div class="panel">
-
-    <!-- intro -->
-    <section class="screen active" id="s-intro">
-      <div class="d-center">
-        <span class="d-hero-en">Diagnosis</span>
-        <div class="d-title">役員候補度診断</div>
-        <div class="d-sub">あなたは役員候補として、いまどの位置にいるのか。</div>
-        <div class="d-meta"><span>&#9201; 約3分・<b>10問</b></span><span>&#9636; <b>スコア＋レーダー</b></span><span>&#9823; <b>同職位ベンチマーク</b></span></div>
-        <button class="btn btn-primary" onclick="go('s-q')">診断をはじめる <span class="arw">&rsaquo;</span></button>
-        <p style="font-size:12px;color:var(--ink-mute);margin-top:18px">回答は統計化・匿名化のうえ活用します（個人が特定される形では公開されません）</p>
-      </div>
-    </section>
-
-    <!-- questions -->
-    <section class="screen" id="s-q">
-      <div class="prog-head"><span id="qc">質問 1 / 10</span><span id="qp">10%</span></div>
+  <!-- QUESTIONS -->
+  <section class="screen" id="s-q">
+    <div class="panel">
+            <div class="prog-head"><span id="qc"></span><span id="qp">0%</span></div>
       <div class="prog"><div id="qf"></div></div>
+      <div class="phase-tag" id="ph"></div>
       <div class="q-text" id="qt"></div>
+      <div class="q-help" id="qh"></div>
       <div class="opts" id="qo"></div>
       <div class="nav-row">
         <button class="link-btn" id="qb" onclick="prevQ()">&lsaquo; 戻る</button>
-        <button class="btn btn-primary" id="qn" onclick="nextQ()" disabled style="opacity:.45">次へ <span class="arw">&rsaquo;</span></button>
+        <button class="btn btn-primary" id="qn" onclick="nextQ()" disabled>次へ <span class="arw">&rsaquo;</span></button>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- gate -->
-    <section class="screen" id="s-gate">
-      <span class="d-hero-en">Almost there</span>
-      <div class="d-title" style="font-size:23px">診断完了。結果を見るには登録を。</div>
-      <div class="d-sub">スコア・レーダー・同職位ベンチマークが表示されます。</div>
+  <!-- GATE -->
+  <section class="screen" id="s-gate">
+    <div class="panel">
+      <span class="kick">あと1ステップ</span>
+      <div class="title" style="font-size:21px">回答完了。メールアドレスを入力すると、結果をその場で表示します。</div>
+      <div class="sub">スコア・5軸レーダー・役員の目標プロファイルとの差・次の一手を表示します。会員登録は不要です。</div>
       <div class="gate">
         <div class="prev">
           <div class="l">あなたの役員候補度</div>
-          <div class="blur">上位 ?? %</div>
-          <div class="lock">&#128274; 登録で表示</div>
+          <div class="blur">総合 ?? 点</div>
+          <div class="lock">メール入力で表示されます</div>
         </div>
         <div>
           <input type="email" placeholder="name@company.com" id="email">
           <label class="consent"><input type="checkbox" checked> 回答の統計化・匿名化での活用に同意（必須）</label>
-          <label class="consent"><input type="checkbox"> 非公開求人・キャリア情報の受け取り（任意）</label>
-          <label class="consent"><input type="checkbox"> キャリア面談の案内（任意）</label>
-          <button class="btn btn-primary btn-full" style="margin-top:6px" onclick="showResult()">結果を見る</button>
+          <label class="consent"><input type="checkbox" id="optMail"> 役員・経営幹部の非公開求人やキャリア情報の案内をメールで受け取る（任意）</label>
+          <label class="consent"><input type="checkbox" id="optConsult"> キャリア相談の案内を希望する（任意）</label>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:4px" onclick="submitLead()">結果を見る <span class="arw">&rsaquo;</span></button>
+          <div style="font-size:11px;color:var(--ink-mute);margin-top:8px">メールアドレスはご連絡にのみ使用します。個人情報の取扱いは<a href="https://briedge.co.jp/contact/pp" target="_blank" rel="noopener" style="color:var(--blue)">プライバシーポリシー</a>をご確認ください。</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- result -->
-    <section class="screen" id="s-result">
-      <div class="score-hero">
+  <!-- RESULT -->
+  <section class="screen" id="s-result">
+    <div class="panel">
+      <div class="tier-hero">
         <div class="l">あなたの役員候補度</div>
-        <div class="big" id="rpct">上位 18%</div>
-        <div class="co" id="rco">同職位・同年代との比較</div>
+        <div class="ptype"><span class="tl">Type</span><span id="rType"></span></div>
+        <div class="tier" id="rTier">有力候補</div>
+                <div id="rco" style="font-size:12px;color:var(--ink-mute);margin-top:4px"></div>
       </div>
-      <div class="r-grid">
-        <div class="r-panel"><div class="h">Strength Radar</div><div id="radar"></div></div>
-        <div class="r-panel"><div class="h">Benchmark</div><div id="bars"></div><div style="font-size:11px;color:var(--ink-mute);margin-top:6px">同職位の平均との比較</div></div>
+      <div class="rgrid">
+        <div class="rpanel"><div class="h">5軸レーダー</div><div id="radar"></div></div>
+        <div class="rpanel"><div class="h">役員プロファイルとの差（主要3軸）</div><div id="bars"></div><div id="benchLegend" style="font-size:11px;color:var(--ink-mute);margin-top:6px"></div></div>
       </div>
-      <div class="cmt" id="rcmt"></div>
+      <div class="cmt"><div class="h">あなたの強み</div><div id="rStr"></div></div>
+      <div class="cmt"><div class="h">次の一手 ── 次に埋める経験</div><div id="rNext"></div></div>
       <div class="cta2">
-        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="alert('Phase 2で実装：非公開の市場レポート（報酬相場・フェーズ別の役員像）')">非公開「市場」レポートを見る</button>
-        <button class="btn btn-ghost" style="flex:1;justify-content:center" onclick="alert('Phase 1ではここで面談希望を受け付け、ブライエッジへ連携します')">キャリア相談する</button>
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="consultClick()">役員人材の専門家にキャリア相談する（無料）</button>
       </div>
-      <p style="font-size:11.5px;color:var(--ink-mute);margin-top:16px;text-align:center">※ スコアは経験項目からの暫定算出。回答が増えるほど精度が上がります。</p>
-    </section>
-
-  </div>
+      <div style="text-align:center;margin-top:12px"><button class="link-btn" onclick="shareClick()">結果を匿名でシェアする</button></div>
+      <div class="nav-row" style="margin-top:18px">
+        <button class="link-btn" onclick="go('s-intro')">&lsaquo; 最初から</button>
+        <span style="font-size:11.5px;color:var(--ink-mute)">役員の目標プロファイルとの比較</span>
+      </div>
+          </div>
+  </section>
+  <!-- CONSULT -->
+  <section class="screen" id="s-consult">
+    <div class="panel cform">
+      <span class="kick">キャリア相談（無料・秘密厳守）</span>
+      <div class="title" style="font-size:21px">役員人材の専門家に相談する</div>
+      <div class="sub" style="margin-bottom:16px">ブライエッジのコンサルタントが、診断結果をもとに次の一手を一緒に整理します。転職の意思がなくても構いません。担当者から当日〜3営業日以内にご連絡します。</div>
+      <label style="font-size:13px;font-weight:700;color:var(--navy)">お名前（任意）</label>
+      <input type="text" id="cName" placeholder="例：山田 太郎">
+      <label style="font-size:13px;font-weight:700;color:var(--navy)">メールアドレス（必須）</label>
+      <input type="email" id="cEmail" placeholder="name@example.com">
+      <label style="font-size:13px;font-weight:700;color:var(--navy)">電話番号（任意・電話希望の方）</label>
+      <input type="tel" id="cTel" placeholder="090-0000-0000">
+      <label style="font-size:13px;font-weight:700;color:var(--navy)">相談したいこと（任意）</label>
+      <select id="cTopic"><option value="">選択してください</option><option>役員に到達するために次に何を積むべきか</option><option>自分の市場価値・年収の相場を知りたい</option><option>役員・経営幹部の求人がどの程度あるか</option><option>今の会社で役員を目指すべきか、外に出るべきか</option><option>その他</option></select>
+      <label style="font-size:13px;font-weight:700;color:var(--navy)">補足（任意）</label>
+      <textarea id="cNote" rows="3" placeholder="現在の状況やご希望の連絡方法など"></textarea>
+      <label class="consent"><input type="checkbox" id="cAgree" checked> <a href="https://briedge.co.jp/contact/pp" target="_blank" rel="noopener" style="color:var(--blue)">プライバシーポリシー</a>に同意してブライエッジ株式会社に相談を申し込む（必須）</label>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:6px" id="cSend" onclick="sendConsult()">相談を申し込む <span class="arw">›</span></button>
+      <div class="nav-row"><button class="link-btn" onclick="go('s-result')">‹ 結果に戻る</button><span></span></div>
+    </div>
+  </section>
+  <section class="screen" id="s-done">
+    <div class="panel done">
+      <div class="ic">✓</div>
+      <div class="title" style="font-size:21px">相談を受け付けました</div>
+      <div class="sub">ブライエッジの担当者から、当日〜3営業日以内にメール（ご希望の方はお電話）でご連絡します。</div>
+      <div style="margin-top:18px"><button class="link-btn" onclick="go('s-result')">‹ 結果に戻る</button></div>
+    </div>
+  </section>
 </div>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="legal" style="border-top:none;padding-top:0">
-      <span>運営：ブライエッジ株式会社 ／ 有料職業紹介事業許可 ◯◯-◯◯◯◯◯◯（要差し替え）</span>
-      <span>&copy; BRIEDGE CORPORATION</span>
-    </div>
+<footer style="background:var(--navy);color:#B9CBE0;padding:26px 18px 30px;font-size:12.5px">
+  <div style="max-width:720px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
+    <span>運営：ブライエッジ株式会社 ／ 有料職業紹介事業許可番号 13-ユ-306555</span>
+    <nav><a href="https://briedge.co.jp/contact/pp" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;margin-left:16px">プライバシーポリシー</a><a href="https://briedge.co.jp/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;margin-left:16px">運営会社</a></nav>
   </div>
+  <div style="max-width:720px;margin:8px auto 0;font-size:11.5px">© 2026 BRIEDGE Co., Ltd.</div>
 </footer>
 
 <script>
-/* ===== 暫定設問（確定後に差し替え） ===== */
+/* ===== 18問（簡易12＋詳細6・一息・すべて必須） ===== */
 const QS=[
- {t:"現在の役職は？",k:"role",o:[["課長／マネージャー",40],["部長",55],["本部長／事業部長",65],["執行役員候補／VP",75],["執行役員／取締役／CxO",88]]},
- {t:"業界は？（記録用）",k:"ind",o:[["IT・SaaS／インターネット",0],["メーカー・製造",0],["金融",0],["商社・流通・小売",0],["その他",0]]},
- {t:"会社のフェーズは？（記録用）",k:"stage",o:[["スタートアップ（創業初期）",0],["成長・拡大期",0],["IPO準備中",0],["上場企業",0],["大企業・老舗",0]]},
- {t:"直接マネジメントした人数（最大時）は？",k:"mgr",o:[["0名",10],["1〜5名",35],["6〜20名",60],["21〜50名",80],["51名以上",95]]},
- {t:"PL（損益）責任の規模は？",k:"pl",o:[["なし",10],["部門・チームの予算責任",40],["事業PL（数億〜数十億）",75],["全社PL",95]]},
- {t:"経営会議への関与は？",k:"kai",o:[["関わりなし",10],["資料提出・報告のみ",35],["常時参加している",65],["意思決定に関与している",90]]},
- {t:"役員・CxOと働いた経験は？",k:"work",o:[["なし",10],["上司が役員・CxOだった",40],["役員・CxOの直下で働いた",65],["役員・CxOと協働で事業推進",88]]},
- {t:"経験した事業フェーズは？",k:"phase",o:[["安定・成熟事業のみ",25],["拡大期を経験",50],["IPO準備・上場を経験",78],["0→1の立ち上げを含む複数",92]]},
- {t:"専門領域（最も近いもの）は？（記録用）",k:"func",o:[["事業・営業・マーケ",0],["プロダクト・開発",0],["経営企画",0],["財務・経理",0],["人事・組織",0]]},
- {t:"採用・組織づくりの経験は？",k:"org2",o:[["なし",10],["数名の採用に関与",35],["チームの立ち上げを経験",65],["全社の採用・組織設計に関与",90]]},
+ /* A. プロフィール（軽い・冒頭） */
+ {key:'role',type:'sel',axis:'keiei',ph:'プロフィール',t:'現在の役職は？',help:'最も近いものを選択',
+   o:[['課長／マネージャー',40],['部長',55],['本部長／事業部長',65],['執行役員候補／VP',75],['執行役員／取締役／CxO',88]]},
+ {key:'industry',type:'sel',axis:'rec',ph:'プロフィール',t:'業界は？',o:[['IT・SaaS／インターネット',0],['メーカー・製造',0],['金融',0],['商社・流通・小売',0],['その他',0]]},
+ {key:'age',type:'sel',axis:'rec',ph:'プロフィール',t:'年代は？',o:[['30代後半',0],['40代前半',0],['40代後半',0],['50代',0]]},
+ {key:'func',type:'sel',axis:'rec',ph:'プロフィール',t:'専門領域（職能）は？',help:'タイプ分類に使用（スコアには影響しません）',
+   o:[['事業・営業・マーケ',0],['プロダクト・開発',0],['経営企画',0],['財務・経理',0],['人事・組織',0]]},
+ /* B. 組織マネジメント（3） */
+ {type:'num',axis:'org',ph:'組織マネジメント',t:'直接マネジメントした最大人数は？',unit:'名',ph2:'例：15',thr:[[0,10],[1,35],[6,60],[21,80],[51,95]]},
+ {type:'sel',axis:'org',ph:'組織マネジメント',t:'マネジメント経験年数は？',o:[['0〜2年',20],['3〜5年',45],['6〜10年',65],['11〜15年',82],['16年〜',95]]},
+ {type:'sel',axis:'org',ph:'組織マネジメント',t:'採用・組織づくりへの関与は？',o:[['なし',15],['数名の採用に関与',40],['チームの立ち上げを経験',68],['全社の採用・組織設計に関与',90]]},
+ /* C. 事業・PL責任（3・重複削除／別観点の3問目） */
+ {type:'sel',axis:'pl',ph:'事業・PL責任',t:'損益責任の範囲は？',o:[['なし',10],['部門・チームの予算',40],['事業PL（数億〜数十億）',75],['全社PL',95]]},
+ {type:'num',axis:'pl',ph:'事業・PL責任',t:'責任を持ったPL／売上規模は？',help:'該当が無ければ 0 でOK',unit:'億円',ph2:'例：10',thr:[[0,10],[0.5,40],[5,70],[30,88],[100,95]]},
+ {type:'sel',axis:'pl',ph:'事業・PL責任',t:'予算・投資の決裁権限は？',o:[['決裁権限はない',15],['一定額まで承認できる',45],['部門の投資を決められる',70],['全社の投資判断に関与する',92]]},
+ /* D. 経営への近さ（3・経営会議＋取締役会を1ラダーに統合＋社外接点） */
+ {type:'sel',axis:'keiei',ph:'経営への近さ',t:'経営の意思決定への関与は？',help:'最も近い段階を選択',o:[['関わりなし',10],['資料提出・報告のみ',30],['経営会議に常時参加',55],['議案を提出・立案する',75],['取締役会で議決に関与',92]]},
+ {type:'sel',axis:'keiei',ph:'経営への近さ',t:'役員・CxOと働いた経験は？',o:[['なし',10],['上司が役員・CxOだった',40],['役員・CxOの直下で働いた',65],['役員・CxOと協働で事業推進',88]]},
+ {type:'sel',axis:'keiei',ph:'経営への近さ',t:'社外（投資家・取締役・経営層）との接点は？',o:[['ほぼない',15],['たまにある',40],['定期的にある',65],['自ら関係を構築している',88]]},
+ /* E. 事業フェーズ・変革（2・IPO/0→1の重複をフェーズに集約、関与の深さで役割分担） */
+ {type:'sel',axis:'phase',ph:'事業フェーズ・変革',t:'経験した事業フェーズは？',o:[['安定・成熟事業のみ',45],['拡大期を経験',50],['IPO準備・上場を経験',78],['0→1の立ち上げを含む複数',92]]},
+ {type:'sel',axis:'phase',ph:'事業フェーズ・変革',t:'資金調達・M&A・IPOへの関与の深さは？',o:[['いずれも関与なし',40],['同席・一部を担当',55],['主体的に関与',78],['責任者として完遂',92]]},
+ /* F. 専門・市場価値（2）＋ 前向きな締め */
+ {type:'sel',axis:'senmon',ph:'専門・市場価値',t:'現役職での経験年数は？',o:[['1年未満',50],['1〜3年',60],['4〜6年',70],['7年〜',80]]},
+ {key:'income',type:'sel',axis:'senmon',ph:'専門・市場価値',t:'現在の年収は？',help:'センシティブ項目のためレンジ',o:[['〜800万',30],['800〜1200万',55],['1200〜2000万',78],['2000万〜',92]]},
+ {key:'goal',type:'sel',axis:'rec',ph:'志向',t:'目指すポジション・志向は？',help:'今後のキャリアの方向性（キャリア相談にも活用）',o:[['現職位を継続',0],['執行役員を目指す',0],['取締役・CxOを目指す',0],['事業責任者を目指す',0],['まだ決めていない',0]]},
 ];
-let cur=0; const ans=new Array(QS.length).fill(null);
+const ROLE_LABELS=['課長／マネージャー','部長','本部長／事業部長','執行役員候補／VP','執行役員／取締役／CxO'];
+let cur=0, ans=[], lastResult=null;
 
-function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);if(id==='s-q')renderQ();}
+/* ===== 計測：GTM dataLayer 発火（タグ設定はGTM管理画面側で行う） ===== */
+function dl(n,p){window.dataLayer=window.dataLayer||[];var o={event:n};if(p){for(var k in p){if(p[k]!=null)o[k]=p[k];}}window.dataLayer.push(o);}
+function ansLabel(key){for(var i=0;i<QS.length;i++){if(QS[i].key===key&&ans[i]!=null&&QS[i].o)return QS[i].o[ans[i]][0];}return null;}
+/* リード送信：役職・年収・志向をイベントに付与（質判定/部長以上比率/CAPI連携の土台）。メール等の個人情報はpushしない */
+/* ===== 送信先（Google Apps Script のウェブアプリURL）。gas_lead_form.gs をデプロイして出たURLを LEAD_ENDPOINT に貼るだけで有効化 ===== */
+const LEAD_ENDPOINT='';  // 例：'https://script.google.com/macros/s/AKfycb.../exec'
+function postForm(payload){
+  if(!LEAD_ENDPOINT) return Promise.resolve(false);
+  payload.ref=document.referrer||'';payload.url=location.href;
+  /* text/plain + no-cors：GASはプリフライトを返せないため。レスポンスは読めないが送信は届く */
+  return fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).then(()=>true).catch(()=>false);
+}
+function submitLead(){
+  var em=(document.getElementById('email')||{}).value||'';
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){alert('メールアドレスを入力してください');return;}
+  var r=computeAxes();
+  dl('diag_lead_submit',{lead_role:ansLabel('role'),lead_income:ansLabel('income'),lead_goal:ansLabel('goal'),lead_tier:tierOf(r.comp).n});
+  postForm({_subject:'【役員候補度診断】診断完了',type:'lead',email:em,role:ansLabel('role'),industry:ansLabel('industry'),age:ansLabel('age'),income:ansLabel('income'),goal:ansLabel('goal'),tier:tierOf(r.comp).n,score:r.comp,axes:JSON.stringify({pl:r.pl,keiei:r.keiei,org:r.org,phase:r.phase,senmon:r.senmon}),opt_mail:!!(document.getElementById('optMail')||{}).checked,opt_consult:!!(document.getElementById('optConsult')||{}).checked});
+  showResult();
+}
+function consultClick(){
+  dl('diag_consult_click',{lead_role:ansLabel('role'),lead_goal:ansLabel('goal')});
+  var em=(document.getElementById('email')||{}).value||'';
+  if(em)document.getElementById('cEmail').value=em;
+  go('s-consult');
+}
+function sendConsult(){
+  var em=document.getElementById('cEmail').value||'';
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){alert('メールアドレスを入力してください');return;}
+  if(!document.getElementById('cAgree').checked){alert('プライバシーポリシーへの同意が必要です');return;}
+  var b=document.getElementById('cSend');b.disabled=true;
+  var r=lastResult||computeAxes();
+  dl('diag_consult_submit',{lead_role:ansLabel('role'),lead_goal:ansLabel('goal')});
+  postForm({_subject:'【役員候補度診断】キャリア相談の申込',type:'consult',name:document.getElementById('cName').value,email:em,tel:document.getElementById('cTel').value,topic:document.getElementById('cTopic').value,note:document.getElementById('cNote').value,role:ansLabel('role'),industry:ansLabel('industry'),age:ansLabel('age'),income:ansLabel('income'),goal:ansLabel('goal'),tier:tierOf(r.comp).n,score:r.comp,axes:JSON.stringify({pl:r.pl,keiei:r.keiei,org:r.org,phase:r.phase,senmon:r.senmon})}).then(function(){b.disabled=false;go('s-done');});
+}
+function shareClick(){
+  dl('diag_share_click');
+  var r=lastResult||computeAxes();
+  var t='役員候補度診断（無料・5分）を受けてみた。結果：'+tierOf(r.comp).n+'／'+TYPE_NAMES[[['pl',r.pl],['keiei',r.keiei],['org',r.org],['phase',r.phase],['senmon',r.senmon]].sort((x,y)=>y[1]-x[1])[0][0]]+' #役員候補度診断';
+  var u=location.href.split('#')[0];
+  window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(u),'_blank','noopener');
+}
+
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+dl('diag_intro_view');
+function startQ(){dl('diag_start');ans=new Array(QS.length).fill(null);cur=0;go('s-q');renderQ();}
 function renderQ(){
  const q=QS[cur];
- document.getElementById('qc').textContent=`質問 ${cur+1} / ${QS.length}`;
- const pct=Math.round((cur)/QS.length*100);
- document.getElementById('qp').textContent=pct+'%';
- document.getElementById('qf').style.width=pct+'%';
- document.getElementById('qt').textContent=q.t;
+ document.getElementById('qc').textContent='質問 '+(cur+1)+' / '+QS.length;
+ const pct=Math.round(cur/QS.length*100);
+ document.getElementById('qp').textContent=pct+'%';document.getElementById('qf').style.width=pct+'%';
+ document.getElementById('ph').textContent=q.ph||'';
+ document.getElementById('qt').textContent=q.t;document.getElementById('qh').textContent=q.help||'';
  const box=document.getElementById('qo');box.innerHTML='';
- q.o.forEach((o,i)=>{const d=document.createElement('div');d.className='opt'+(ans[cur]===i?' sel':'');
-   d.innerHTML=`<span>${o[0]}</span><span class="ck">&#10003;</span>`;
-   d.onclick=()=>{ans[cur]=i;renderQ();};box.appendChild(d);});
+ if(q.type==='sel'){
+   q.o.forEach((o,i)=>{const d=document.createElement('div');d.className='opt'+(ans[cur]===i?' sel':'');
+     d.innerHTML='<span>'+o[0]+'</span><span class="ck">&#10003;</span>';d.onclick=()=>{ans[cur]=i;renderQ();};box.appendChild(d);});
+ }else{
+   const w=document.createElement('div');w.className='numwrap';
+   const inp=document.createElement('input');inp.type='number';inp.min='0';inp.inputMode='decimal';inp.placeholder=q.ph2||'';
+   if(ans[cur]!=null&&ans[cur]!=='')inp.value=ans[cur];
+   inp.oninput=()=>{ans[cur]=inp.value;syncNext();};
+   const u=document.createElement('span');u.className='unit';u.textContent=q.unit||'';
+   w.appendChild(inp);w.appendChild(u);box.appendChild(w);setTimeout(()=>inp.focus(),30);
+ }
  document.getElementById('qb').style.visibility=cur===0?'hidden':'visible';
- const nx=document.getElementById('qn');const ready=ans[cur]!==null;nx.disabled=!ready;nx.style.opacity=ready?1:.45;
- nx.innerHTML=(cur===QS.length-1?'結果へ進む':'次へ')+' <span class="arw">&rsaquo;</span>';
+ syncNext();
 }
-function nextQ(){if(ans[cur]===null)return;if(cur<QS.length-1){cur++;renderQ();}else{go('s-gate');}}
+function answered(){const q=QS[cur];if(q.type==='sel')return ans[cur]!=null;return ans[cur]!=null&&ans[cur]!==''&&!isNaN(parseFloat(ans[cur]));}
+function syncNext(){const nx=document.getElementById('qn');const ok=answered();nx.disabled=!ok;
+  nx.innerHTML=(cur===QS.length-1?'結果へ進む':'次へ')+' <span class="arw">&rsaquo;</span>';}
+function nextQ(){if(!answered())return;if(cur<QS.length-1){cur++;renderQ();}else{dl('diag_complete');go('s-gate');}}
 function prevQ(){if(cur>0){cur--;renderQ();}}
 
-function val(k){const q=QS.find(x=>x.k===k);const i=ans[QS.indexOf(q)];return i==null?0:q.o[i][1];}
-function roleLabel(){const i=ans[0];return i==null?'':QS[0].o[i][0];}
+function scoreNum(v,thr){let s=thr[0][1];for(const t of thr){if(v>=t[0])s=t[1];}return s;}
+function computeAxes(){
+ const acc={pl:[],keiei:[],org:[],phase:[],senmon:[]};let roleIdx=1;
+ QS.forEach((q,i)=>{if(q.key==='role'&&ans[i]!=null)roleIdx=ans[i];if(q.axis==='rec')return;let s=null;
+   if(q.type==='sel'){if(ans[i]==null)return;s=q.o[ans[i]][1];}else{const v=parseFloat(ans[i]);if(isNaN(v))return;if(q.axis==='pl'&&v===0)return;s=scoreNum(v,q.thr);}
+   acc[q.axis].push(s);});
+ const mean=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):0;
+ const ax={pl:mean(acc.pl),keiei:mean(acc.keiei),org:mean(acc.org),phase:mean(acc.phase),senmon:mean(acc.senmon)};
+ ax.comp=Math.round(ax.pl*.25+ax.keiei*.25+ax.org*.20+ax.phase*.10+ax.senmon*.20);ax.roleIdx=roleIdx;return ax;
+}
+function tierOf(c){if(c>=80)return{n:'エグゼクティブ・レディ',c:'tS'};if(c>=65)return{n:'有力候補',c:'tA'};if(c>=50)return{n:'育成途上',c:'tB'};return{n:'基盤形成',c:'tC'};}
 
-function showResult(){
- const role=val('role'), pl=val('pl'), mgr=val('mgr'), kai=val('kai'), work=val('work'), phase=val('phase'), org2=val('org2');
- const keiei=Math.round((kai+work)/2);
- const org=Math.round(mgr*0.6+org2*0.4);
- const senmon=Math.round((role+pl)/2);
- const comp=Math.round(pl*0.25+keiei*0.25+org*0.20+phase*0.15+senmon*0.15);
- let band; if(comp>=80)band=5;else if(comp>=70)band=12;else if(comp>=60)band=22;else if(comp>=50)band=38;else if(comp>=40)band=55;else band=72;
- document.getElementById('rpct').textContent='上位 '+band+'%';
- document.getElementById('rco').textContent=roleLabel()+'クラス・同年代との比較（暫定・N=◯◯）';
- drawRadar([pl,keiei,org,phase,senmon]);
- drawBars([['事業・PL責任',pl,55],['経営への近さ',keiei,50],['組織マネジメント',org,52]]);
- const axes=[['事業・PL責任',pl],['経営への近さ',keiei],['組織マネジメント',org],['事業フェーズ経験',phase],['専門性',senmon]].sort((a,b)=>b[1]-a[1]);
- document.getElementById('rcmt').innerHTML=`<b>強み：</b>${axes[0][0]}。<b>あと一歩：</b>${axes[4][0]}を強化すると、役員到達がより近づきます。`;
- go('s-result');
+
+/* dummy 定性（監修前・完成文／制作依頼xlsxと同一） */
+/* STR[軸][役職index 0=課長 1=部長 2=本部長 3=執行候補 4=CxO] = [高(65+), 中(65未満)] */
+const STR={
+ pl:[["チーム規模であっても予算と数字に責任を持ち、コストと収益の両面で成果を出してきた実績が強みです。役員登用でまず問われる『数字を自分ごとにする力』を、この段階で既に示せています。規模はこれから広げる段階ですが、質の面では十分に到達しています。","担当領域の予算や数字に日常的に向き合い、使ったコストと出した成果を結び付けて考えてきた経験が強みです。数字から逃げない姿勢は、役員候補として最初に評価される土台になります。数字を見る習慣が判断の癖として身についている点が、大きな持ち味です。"],["部門の損益を背負い、予算配分と投資の判断まで一貫して担ってきた経験が明確な強みです。役員に最も問われる『損益を黒字で着地させる力』を、既に実績として示せる状態にあります。数字で語れることが、あなたの提案の説得力を支える源になっています。","部門の予算に責任を持ち、決められた枠のなかで成果を出し切ってきた経験が強みです。予算を守り切る規律は、事業を任せる側が最初に確認する資質であり、部長として確かな評価点になります。事業の数字を扱う土台は、既に十分に固まっている状態です。"],["複数の事業や部門の損益を束ね、全体の数字に責任を持ってきた経験が明確な強みです。役員に不可欠な『複数の柱を面で黒字化する力』を、既に実績として備えています。単体の成功ではなく、事業全体で利益を作り切れることが希少な価値になっています。","本部や複数チームの数字を横断して見てきた経験が強みです。個別の事業単位ではなく、広い損益を俯瞰する視野は、本部長クラスの中でも確かな持ち味として効いてきます。全体像から数字を捉える習慣が、既にあなたの判断の前提としてしっかり定着しています。"],["事業PLに加え、全社の投資判断やリソース配分にまで踏み込んで関与してきた経験が強みです。役員に求められる『会社の資源を動かす力』を、既に実績として持っています。稼ぐ側と配る側の両方を知っていることが、経営の議論における強さになっています。","事業のPLに責任を持ち、その数字を全社の文脈のなかで説明し切ってきた経験が強みです。事業の数字を経営の数字へ接続する視点は、執行役員候補として明確に評価される力になります。全社を見る立ち位置に、既に自然な形で立てている状態にあります。"],["全社の損益と資本配分の双方に責任を持ち、会社全体の数字を動かしてきた経験が明確な強みです。経営者として問われる『収益構造そのものを設計する力』を体現しています。数字で会社を語れることが、社内はもちろん社外からの信頼にも直結しています。","全社の数字を判断材料として扱う立場にあり、経営としてPLを読む視点を持っていることが強みです。会社全体の損益を前提に議論できる感覚は、役員層の中でも確かな基盤になります。経営の共通言語を当たり前に使えている点が、確かな武器になっています。"]],
+ keiei:[["この役職の段階で、経営会議や上位の意思決定に触れる機会を自ら得てきた経験が強みです。役員に必要な『経営の判断基準を読む力』を、早い段階から養えている状態です。経営が何を見て、何を基準に決めているかを知っていることが大きな差になります。","現場を預かりながら、経営や上位方針の意図を正しく踏まえて動いてきた経験が強みです。現場と経営をつなぐ翻訳力は、上位の役職に進むほど価値が高まっていく資質です。方針を自分の言葉に置き換えて現場に届けられる点が、あなたの明確な持ち味です。"],["経営会議に参画し、部門の代表としてではなく全社視点で議論に関わってきた経験が明確な強みです。役員に必要な『全社の立場で議論に加わる力』を、既に確かな形で備え始めています。会社全体の利益を基準に発言できる点が、そのまま評価につながります。","経営の方針や議論に日常的に触れる機会を持ち、その文脈を踏まえて部門を動かしてきた経験が強みです。上位の意図を汲んで実行に落とす力は、部長として最も信頼される資質のひとつになります。経営との適切な距離感を、既に感覚として十分に掴んでいます。"],["経営の意思決定に主体的に関わり、全社方針そのものを実際に動かしてきた経験が明確な強みです。役員に必要な『経営判断をリードする力』を、既に実績として十分に備えています。議論に参加するだけでなく、結論を作る側に立てていることが確かな強みです。","経営会議に関与し、全社視点での判断に継続的に触れてきた経験が明確な強みです。経営の議論に耐える論点を用意できることは、本部長クラスの中でも確かな評価点として効いてきます。経営の視野で自部門を語れる状態に、既にしっかりと到達している状態です。"],["取締役会レベルの意思決定や全社戦略の策定に関与してきた経験が強みです。役員として『会社の方向を決める視座』を、既に実務のなかで確かな形で持っています。経営の最終的な意思決定の場を知っていることは、登用の場面でそのまま大きな信頼になります。","経営中枢に近い立場で、意思決定が固まっていく過程に触れてきた経験が強みです。会社がどのように決めていくかを内側から知っていることは、執行役員候補として極めて貴重な資産になります。視座の土台は既に整っており、あとは関与の深さの問題です。"],["経営の中核として全社戦略とガバナンスを担ってきた経験が明確な強みです。経営者としての『全社を方向づける視座』を明確に体現しており、会社の意思そのものを形にできる立場にあります。後から身につけることが最も難しい経験を、既に手にしています。","経営の一翼を担い、全社の判断に責任ある立場で関わってきた経験が強みです。会社を支える側として議論に加わり続けてきた安定感は、役員層の中でも確かな信頼につながっています。経営の当事者であり続けているという事実そのものが、確かな強みになります。"]],
+ org:[["チームを率い、自分ではなく人を通じて成果を出してきた力が明確な強みです。役員に不可欠な『人を通じて成果を出す基礎体力』を、この役職の段階で既に備えています。自分が動くのではなく人が動く形を作れている点が、次の段階でも高く評価されます。","少人数のチームを預かり、一人ひとりに向き合いながら成果を出してきた経験が明確な強みです。近い距離で人を動かす力は、組織が大きくなっても効き続ける普遍的な基礎になります。人が付いてくる関係を作れていることが、確かな持ち味になっています。"],["部門規模の組織を率い、人と成果の両方を同時にマネージしてきた力が明確な強みです。役員に不可欠な『組織を率いるスケール』を、既に実績として十分に備えています。人数が増えても成果の質を落とさずに運営できる点が、極めて確かな強みになっています。","部門のマネジメントを長く担い、自分が抱え込まずに任せて回す仕組みを作ってきた経験が強みです。組織として成果を出し続ける形は、上位の役職ほど重要になる資質です。管理職として安定して組織を回し切れる点が、そのまま確かな評価につながります。"],["複数のチームや部門を束ね、大きな組織を動かしてきた力が明確な強みです。役員に不可欠な『階層を越えて組織を動かす力』を、既に実績として確かに持っています。直接目の届かない現場まで動かせることが、役員候補として極めて希少な価値になっています。","複数のチームを統括し、利害や文化の異なる組織を束ねてきた経験が明確な強みです。部門間の調整を成立させる力は、本部長クラスの中でも確かな持ち味として評価されます。人と組織を面で捉える視野が、既に十分に備わっている状態にあると言える段階です。"],["全社の採用や組織設計に関与し、大きな組織を設計・運営してきた経験が明確な強みです。役員に求められる『人と組織を設計する力』を備え、組織を作る側に立てています。人材面の打ち手を自ら設計して持てることが、他にはない大きな強みとして効いてきます。","規模のある組織を預かり、崩すことなく安定して運営してきた経験が明確な強みです。大きな組織を動かし切る力は、執行役員候補として高く評価される中核的な資質です。組織を任せても大丈夫だという信頼を、既に社内で確立できている点が大きな強みです。"],["全社の人的資本と組織カルチャーを方向づけてきた経験が明確な強みです。経営者として『組織文化を方向づける力』を明確に体現しており、仕組みだけでなく空気まで動かせる立場にあります。後から獲得することが最も難しい力を、既に自分のものにしています。","全社の組織運営に継続して関与し、会社全体の人材を見渡す立場にあることが強みです。部門を越えて人と組織を捉える視野は、経営層の中でも確かな基盤として効いてきます。組織を経営マターとして扱えていることが、経営者としての大きな価値になります。"]],
+ phase:[["拡大期や立ち上げなど、変化の大きい局面を当事者として経験してきたことが明確な強みです。役員に求められる『変化の只中で判断する胆力』を、早い段階から身につけられています。仕組みが整っていない環境でも動けることが、確かな強みになっていきます。","性質の異なる複数の事業局面に触れ、状況に合わせて動き方を変えてきた経験が明確な強みです。一つのやり方に固執しない適応力は、変化の速い環境ほど価値が上がっていきます。環境を選ばずに成果を出せることが、あなたの確かな持ち味になっています。"],["拡大期やIPO準備など、変化の大きい局面をくぐり抜けてきた経験が明確な強みです。役員に求められる『修羅場での判断力』を、実体験に裏打ちされた形で備えています。前例のない場面でも決め切れることが、役員候補としての明確な強さになっています。","拡大や変化の局面に身を置き、揺れ動く状況のなかで実行を担い切ってきた経験が強みです。方針が動くなかでも組織を止めない実行力は、部長として最も頼りにされる資質のひとつになります。変化に耐えながら成果を出す強さを、既に十分な形で備えています。"],["0→1やIPO・M&Aなど、非連続な成長局面を自ら主導してきた経験が明確な強みです。役員に求められる『変化を仕掛ける力』を、既に確かな実績として備えています。自ら流れを作れる点が、優秀な実務家と経営人材とを分ける明確な違いになっています。","複数の成長フェーズを経験し、局面ごとに求められる打ち手を的確に使い分けてきた経験が強みです。フェーズを読む力は、本部長クラスの中でも確かな持ち味として効いてきます。事業がいまどの段階にあるかを正しく見立てられる点が、確かな強みになっています。"],["全社を巻き込む変革（IPO・再編）を主導してきた経験が明確な強みです。役員に求められる『会社の転換点を作る力』を備え、社内の抵抗も含めて会社を動かし切れる立場にあります。経験者が少ないため、市場において希少性の高い実績になっています。","複数のフェーズと変革の局面をまたいで経験を重ねてきたことが明確な強みです。局面が変わっても成果を出せる対応力は、執行役員候補として評価される中核的な資質です。会社の変化に耐え、成果を出し続けてきた実績がそのまま市場での信頼になっています。"],["大きな事業転換や資本イベントを自ら主導してきた経験が明確な強みです。経営者として『非連続成長を設計・実行する力』を体現しており、会社の未来そのものを自ら描ける立場にあります。役員市場において最も代替の効かない、希少な種類の経験を持っています。","変化局面を数多く経験し、会社の転換に幾度も立ち会ってきた厚みが強みです。修羅場を知っている経営者であることは、それ自体が組織にとっての大きな安心につながります。危機と成長の両方を内側から見てきたことが、経営者としての大きな財産になります。"]],
+ senmon:[["特定の領域で高い専門性を積み上げ、市場でも評価される実績を作ってきたことが明確な強みです。役員候補として『代えがたい核』を、この役職の段階で既に持てています。専門性そのもので選ばれる立場にあることが、市場において大きな武器になり続けます。","担当領域の実務を積み重ね、任せれば確実に仕上がるという信頼を得てきたことが明確な強みです。実務で信頼される確かさは、どの役職に進んでも土台として効き続ける力です。肩書ではなく仕事の質そのもので評価されている点が、確かな持ち味になっています。"],["専門領域で市場評価の高い実績を長く積み上げてきたことが明確な強みです。役員として『余人をもって代えがたい』核を持ち、社外からも明確に認識される存在になっています。名前で仕事が来る状態にあることが、確かな市場価値の証明になっていると言えます。","専門領域を長く担い続け、その領域なら任せられるという信頼を確立してきたことが強みです。領域の責任者として認められていることは、部長として確かな評価点のひとつになります。実績に裏打ちされた説得力を、既に社内で確立している点が確かな強みです。"],["幅広い経験に加え、突出した専門の核を併せ持つことが明確な強みです。役員として『この分野なら第一人者』と言える価値を備えており、多方面から評価される立場にあります。広さと深さを両立している人材は少なく、市場における希少性が高い状態にあります。","広い経験と、そのなかで培ってきた確かな専門性を併せ持つことが強みです。幅と深さの両方を語れる人材は多くなく、本部長クラスの中でも確かな希少性として評価されます。守備範囲の広さそのものが、役員候補としての価値として明確に効いている状態です。"],["専門性を経営レバーに転換し、市場価値の高い実績を作ってきた経験が強みです。役員として『専門を武器に会社を動かす力』を持ち、専門家と経営者の両方の顔を使い分けられています。この組み合わせを持つ人材は少なく、希少性が極めて高い状態にあります。","専門領域と経営の両面を経験し、どちらの言葉でも語れることが明確な強みです。現場の実務と経営の判断を橋渡しできる人材は限られており、執行役員候補として明確に高く評価されます。両方の世界を知っていること自体が、そのまま価値になっています。"],["専門性を会社の競争優位へと昇華させてきた経験が明確な強みです。経営者として『領域を経営戦略の中核に据える力』を体現しており、自分の強みがそのまま会社の強みになっています。個人の専門性が会社の価値に直結する、最も高い次元の市場価値です。","確立した専門性を持ちながら、経営そのものに携わっていることが明確な強みです。拠って立つ領域があることは、経営判断に一貫性と説得力の両方をもたらします。専門という揺るがない軸を持った経営者であることが、あなただけが持つ固有の価値になります。"]]
+};
+/* NEXT[軸][役職index 0=課長 1=部長 2=本部長 3=執行候補 4=CxO] */
+const NEXT={
+ pl:["予算やコストの管理は担ってきましたが、売上・利益そのものに責任を持つ経験が手薄です。規模は小さくとも自分の数字を持つポジションを取り、売上と利益の両面で結果を出す経験を積みましょう。金額の大きさより『損益を動かした』実績が次の評価軸です。","部門の予算責任は十分ですが、事業のPLを背負い黒字をつくる経験が次の壁です。担当領域を『コスト管理』から『損益を作る』役割へ広げ、売上と利益の両方に責任を持つ数字を取りに行きましょう。予算を守る力から利益を生む力への転換が問われます。","単一事業のPLは見てきましたが、複数事業を束ねて全社数字に効かせる経験が不足しています。事業横断の損益や新規領域の立ち上げに関与し、複数の柱で利益を作る経験へ広げましょう。個別最適から全体最適へと視点を切り替えられるかが、次の課題になります。","事業PLの実績はありますが、全社の投資判断やリソース配分に踏み込む経験が手薄です。全社PLの一部を背負い、投資の可否や資源の振り分けを自ら決める機会を取りに行きましょう。稼ぐ力に加えて、限られた資源をどこへ配分するかを決める力が問われます。","個別事業の収益は作れますが、全社の資本配分・ポートフォリオ判断の実績を厚くする段階です。撤退や再投資の判断まで含め、会社全体の数字を動かす関与をさらに深めましょう。一事業を伸ばす力から、会社全体の価値そのものを高める力への進化が問われます。"],
+ keiei:["現場の実行力は高い一方、経営の意思決定に触れる機会がまだ限られています。上位会議への同席や自らの報告機会を通じて、経営が何を基準に判断しているのかを掴みに行きましょう。現場の言葉を経営の言葉へ翻訳する力が、次の段階への分かれ目になります。","経営会議には参加していても、意思決定そのものの場からは一歩外にいる状態です。会議に自ら論点と打ち手を持ち込み、議論の流れを動かす側へ回る経験を積みましょう。報告する立場から、経営判断そのものに影響を与える立場への移行が問われる段階です。","経営への報告は担っていますが、意思決定そのものへの関与が次の課題です。議案を主体的に設計し、選択肢と根拠をそろえて示しながら、経営判断をリードする経験を積みましょう。問いを持ち帰るのではなく、答えを持ち込んで決めさせる力が問われます。","経営会議での発言力はありますが、取締役会レベルの意思決定への実質的な関与が手薄です。議案オーナーとして議決に踏み込み、決めた結果まで背負い切る経験を取りに行きましょう。発言する立場から、決定に責任を持つ立場への転換が、ここでの焦点になります。","経営の一翼は担っていますが、より上位の全社戦略・ガバナンスへの関与を深める段階です。中長期の方針や資本政策の設計そのものに踏み込み、会社の方向づけを主導する立場を厚くしましょう。決めた方向へ会社全体を動かし切る力が、ここから問われます。"],
+ org:["小さなチームは率いてきましたが、より大きな組織を動かす経験が次の課題になります。人数と階層が広がる組織のマネジメントに挑戦し、人を通じて成果を出す経験を意識して積みましょう。自ら動かす段階から、任せて動かす段階へと移り切れるかが問われます。","部門のマネジメントは担えていますが、部門を超えた組織設計の経験が手薄です。チームの枠を越えて、人材配置や育成の仕組みづくりに主体で関わる役割を取りに行きましょう。与えられた組織を回す力から、組織そのものを作る力への広がりが問われます。","複数チームは統括していますが、全社視点での組織づくりが次の壁です。部門横断のプロジェクトや人材・組織戦略の議論に加わり、会社全体の視点で人を動かす経験を積みましょう。自部門の最適を超えて、全社の人材をどう活かすかを考える力が焦点です。","大きな組織は動かせますが、全社の採用・組織設計そのものをリードする経験が手薄です。要員計画や幹部人材の登用にオーナーとして踏み込み、会社全体の人と組織の設計を担いましょう。組織を率いる力に加えて、次を担う人材を仕込む力が問われる段階です。","組織運営の実績は十分ですが、経営レベルで組織・カルチャー戦略を主導する段階です。人的資本の方向づけや次世代の経営人材の育成を、自ら設計して担う立場を厚くしましょう。今を回す組織から、次の10年を担える組織へと作り替える視点が問われます。"],
+ phase:["安定した事業での実行経験は積めていますが、変化の大きい局面の経験が手薄です。拡大期の事業や新規立ち上げの現場に自ら飛び込み、前例のない状況で判断する経験を取りに行きましょう。仕組みの整った環境の外でも成果を出せるかが、次の分かれ目です。","安定・拡大の経験は十分ですが、非連続な成長局面の当事者経験が不足しています。IPO準備やM&Aなど変化の大きい場に主体で入り、修羅場での意思決定を自ら経験しましょう。連続的な改善の延長線上では届かない領域こそが、次に越える壁になります。","拡大期の経験はありますが、0→1やIPO・M&Aといった局面の主導経験が次の課題です。新規事業や再編を自ら仕掛け、非連続な成長を設計する機会を意識して狙いましょう。変化を任される側から、変化を自ら起こす側への転換が、ここから明確に問われます。","複数フェーズを経験していますが、全社を巻き込む変革を主導した経験が手薄です。IPOや再編といった転換点でオーナーを務め、社内の抵抗も含めて会社を動かし切る経験を取りましょう。部分の変革から、会社全体の転換を担う力へ段階を上げましょう。","変化局面の経験は豊富ですが、より大きな事業転換や資本イベントを主導していく段階です。事業ポートフォリオの組み替えや提携・買収を自ら設計し、実行と統合まで自ら担いましょう。会社全体の非連続な成長を自ら描き、やり切る力が問われる段階になります。"],
+ senmon:["実務の専門性は身についていますが、市場で評価される突出した強みが次の課題です。自分の専門領域をもう一段深め、社外にも通用する実績と数字を自ら作りに行きましょう。社内で通じる力から、市場で選ばれる力への転換が、ここからの大きな分かれ目です。","専門領域での実績はありますが、その価値を言語化して外に示す機会が手薄です。社内外での発信や登壇を通じて『この分野ならこの人』と認知される実績づくりを進めましょう。実績を持っていることと、市場に知られていることは別の力だと捉えましょう。","幅広い経験がある一方で、突き抜けた専門の核がやや弱い状態にあります。自分の代表領域を一つに定め、第一人者と呼ばれる水準まで実績を意識して積み上げましょう。経験の広さは十分に備わっており、次に問われるのは深さと、代えがたい固有性になります。","専門と経営の両面を持ちますが、その専門性を経営レバーへと転換する経験が次の壁です。自分の強みを全社の仕組みや競争力へと組み込む取り組みを、責任者として自ら主導しましょう。個人の武器を会社全体の武器へ変えられるかが焦点になる段階に来ています。","専門性は確立していますが、それを会社全体の競争優位へと昇華させる段階です。自分の領域を経営戦略の中核に据え、他社が真似できない強みとして育て切る動きを、さらに深めましょう。個人の卓越を、会社の持続的な優位性へと変えていく力が問われる段階です。"]
+};
+const ACH_FILL=[{a:"org",ind:"IT・SaaS／インターネット",t:"小さなチームから始め、人に任せて回す仕組みを作りながら組織を拡大した"},{a:"pl",ind:"メーカー・製造",t:"予算管理の役割から、売上に責任を持つ事業リーダーへ手を挙げて移った"},{a:"phase",ind:"メーカー・製造",t:"IPO準備のプロジェクトに主体で入り、非連続な成長を経験した"},{a:"pl",ind:"金融",t:"小さな新規事業のPLを一人で背負い、数字を作る経験を積んだ"},{a:"senmon",ind:"商社・流通・小売",t:"実務の専門を、外部にも通用する形で言語化し発信した"},{a:"phase",ind:"その他",t:"拡大期の修羅場に身を置き、揺れる状況で実行を担い切った"},{a:"pl",ind:"その他",t:"事業の一部から始め、任される損益の範囲を段階的に広げた"},{a:"phase",ind:"IT・SaaS／インターネット",t:"資金調達の実務に入り、事業フェーズの転換を内側から学んだ"},{a:"org",ind:"メーカー・製造",t:"小さなチームから始め、人に任せて回す仕組みを作りながら組織を拡大した"},{a:"phase",ind:"メーカー・製造",t:"安定事業から拡大期の事業へ自ら異動し、変化の局面に飛び込んだ"},{a:"senmon",ind:"金融",t:"専門性を経営の言葉に翻訳し、事業の武器へ転換していった"},{a:"org",ind:"商社・流通・小売",t:"部門を超えた横断組織のリードを引き受け、組織設計を学んだ"},{a:"keiei",ind:"その他",t:"役員の直下で意思決定の過程に入り、経営の判断軸を体で覚えた"},{a:"senmon",ind:"IT・SaaS／インターネット",t:"専門と経営の両面を接続し、領域を競争優位に変えた"},{a:"phase",ind:"IT・SaaS／インターネット",t:"拡大期の修羅場に身を置き、揺れる状況で実行を担い切った"},{a:"pl",ind:"メーカー・製造",t:"管理会計を学び直し、数字で意思決定を語れるよう自分を作り替えた"},{a:"senmon",ind:"メーカー・製造",t:"学び直しで専門の土台を固め、市場価値を高めた"},{a:"pl",ind:"金融",t:"30代で赤字事業のPLを引き受け、コスト構造から作り直して黒字化した"},{a:"pl",ind:"商社・流通・小売",t:"予算管理の役割から、売上に責任を持つ事業リーダーへ手を挙げて移った"},{a:"pl",ind:"その他",t:"小さな新規事業のPLを一人で背負い、数字を作る経験を積んだ"},{a:"org",ind:"その他",t:"部門を超えた横断組織のリードを引き受け、組織設計を学んだ"},{a:"org",ind:"IT・SaaS／インターネット",t:"全社の採用・組織設計に関わり、人と組織を作る側に回った"},{a:"keiei",ind:"IT・SaaS／インターネット",t:"役員の直下で意思決定の過程に入り、経営の判断軸を体で覚えた"},{a:"org",ind:"メーカー・製造",t:"複数チームの統括を任され、利害の異なる組織を束ねた"},{a:"pl",ind:"メーカー・製造",t:"事業の一部から始め、任される損益の範囲を段階的に広げた"},{a:"senmon",ind:"金融",t:"学び直しで専門の土台を固め、市場価値を高めた"},{a:"phase",ind:"金融",t:"資金調達の実務に入り、事業フェーズの転換を内側から学んだ"},{a:"senmon",ind:"商社・流通・小売",t:"自分の代表領域を定め、社内外で第一人者と認知される実績を作った"},{a:"pl",ind:"商社・流通・小売",t:"30代で赤字事業のPLを引き受け、コスト構造から作り直して黒字化した"},{a:"pl",ind:"その他",t:"予算管理の役割から、売上に責任を持つ事業リーダーへ手を挙げて移った"},{a:"senmon",ind:"IT・SaaS／インターネット",t:"一つの領域を深掘りし、余人をもって代えがたい核を作った"},{a:"org",ind:"IT・SaaS／インターネット",t:"部門を超えた横断組織のリードを引き受け、組織設計を学んだ"},{a:"org",ind:"メーカー・製造",t:"全社の採用・組織設計に関わり、人と組織を作る側に回った"},{a:"senmon",ind:"メーカー・製造",t:"実務の専門を、外部にも通用する形で言語化し発信した"},{a:"senmon",ind:"金融",t:"専門と経営の両面を接続し、領域を競争優位に変えた"},{a:"keiei",ind:"商社・流通・小売",t:"取締役会の議案オーナーを引き受け、議決に踏み込む経験を取った"},{a:"org",ind:"その他",t:"小さなチームから始め、人に任せて回す仕組みを作りながら組織を拡大した"},{a:"phase",ind:"IT・SaaS／インターネット",t:"IPO準備のプロジェクトに主体で入り、非連続な成長を経験した"},{a:"senmon",ind:"IT・SaaS／インターネット",t:"専門性を経営の言葉に翻訳し、事業の武器へ転換していった"},{a:"senmon",ind:"メーカー・製造",t:"一つの領域を深掘りし、余人をもって代えがたい核を作った"},{a:"keiei",ind:"金融",t:"役員の直下で意思決定の過程に入り、経営の判断軸を体で覚えた"},{a:"senmon",ind:"商社・流通・小売",t:"専門と経営の両面を接続し、領域を競争優位に変えた"},{a:"pl",ind:"商社・流通・小売",t:"事業の一部から始め、任される損益の範囲を段階的に広げた"},{a:"keiei",ind:"その他",t:"取締役会の議案オーナーを引き受け、議決に踏み込む経験を取った"}];
+function pickAch(axis,ind){var p=ACH_FILL.filter(function(x){return x.a===axis;});if(!p.length)return null;var e=p.filter(function(x){return x.ind===ind;});var pool=e.length?e:p;return pool[Math.floor(Math.random()*pool.length)].t;}
+const TIER_TXT=[
+ '役員就任に必要な経験がひと通り揃っている水準です。あとは機会と実行で、到達は十分に射程に入っています。',
+ '役員候補として有力な位置にいます。いくつかの経験を積み増せば、到達圏にしっかり入ります。',
+ '土台は固まりつつありますが、経営接点や事業規模の面で伸びしろが残ります。次の一手を意識して経験を重ねましょう。',
+ 'これから経験の幅と規模を広げていく段階です。まずは足場となる強みを一つ作ることから始めましょう。'];
+
+function showResult(){lastResult=computeAxes();renderResult();go('s-result');}
+function renderResult(){
+ const a=lastResult,t=tierOf(a.comp);
+ const tEl=document.getElementById('rTier');tEl.textContent=t.n;tEl.className='tier '+t.c;
+
+ const ti=a.comp>=80?0:a.comp>=65?1:a.comp>=50?2:3;
+ document.getElementById('rco').textContent=TIER_TXT[ti];
+ drawRadar([a.pl,a.keiei,a.org,a.phase,a.senmon],TAT_AVG);
+ drawBars([['事業・PL責任',a.pl,TAT_AVG[0]],['経営への近さ',a.keiei,TAT_AVG[1]],['組織マネジメント',a.org,TAT_AVG[2]]]);
+ document.getElementById('benchLegend').innerHTML='<span style="color:#1F6FD1">&#9646;</span> あなた ／ <span style="color:#F2711C">&#9646;</span> 役員の目標プロファイル';
+ const axesArr=[['pl',a.pl],['keiei',a.keiei],['org',a.org],['phase',a.phase],['senmon',a.senmon]].sort((x,y)=>y[1]-x[1]);
+ // 強み：上位2軸 × 役職 × 水準（50パターンの完成文から選択）
+ const strong=axesArr.slice(0,2);
+ document.getElementById('rType').textContent=TYPE_NAMES[strong[0][0]];
+ const sItems=strong.map((w,i)=>'<div style="margin-bottom:'+(i===0?8:0)+'px"><b>'+(i+1)+'.</b> '+STR[w[0]][a.roleIdx][w[1]>=65?0:1]+'</div>');
+ document.getElementById('rStr').innerHTML=sItems.join('');
+ // 次の一手：下位2軸 × 役職（5役職ぶんの完成文から選択）
+ const weak=axesArr.slice(-2).reverse();
+ const uind=(function(){for(var i=0;i<QS.length;i++){if(QS[i].key==='industry'&&ans[i]!=null)return QS[i].o[ans[i]][0];}return null;})();
+ const items=weak.map((w,i)=>{var htm='<div style="margin-bottom:2px"><b>'+(i+1)+'.</b> '+NEXT[w[0]][a.roleIdx]+'</div>';var sn=pickAch(w[0],uind);if(sn)htm+='<div style="margin:0 0 '+(i===0?10:2)+'px 16px;font-size:12px;color:#6E7580;border-left:3px solid #F2711C;padding-left:8px;color:#4B5A68">到達者はこう埋めた：'+sn+'</div>';return htm;});
+ document.getElementById('rNext').innerHTML=items.join('');
 }
-function drawRadar(v){
- const labels=['PL','経営','組織','フェーズ','専門'];const cx=110,cy=100,R=72,n=5;let grid='',axis='';
- for(let r=1;r<=3;r++){let p='';for(let i=0;i<n;i++){const a=-Math.PI/2+i*2*Math.PI/n;p+=(cx+Math.cos(a)*R*r/3)+','+(cy+Math.sin(a)*R*r/3)+' ';}grid+=`<polygon points="${p}" fill="none" stroke="#DDD8CC"/>`;}
- let pts='';for(let i=0;i<n;i++){const a=-Math.PI/2+i*2*Math.PI/n;axis+=`<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*R}" y2="${cy+Math.sin(a)*R}" stroke="#DDD8CC"/>`;const lx=cx+Math.cos(a)*(R+15),ly=cy+Math.sin(a)*(R+15);axis+=`<text x="${lx}" y="${ly+4}" font-size="10" fill="#5C6570" text-anchor="middle" font-family="Noto Sans JP">${labels[i]}</text>`;const rr=R*v[i]/100;pts+=(cx+Math.cos(a)*rr)+','+(cy+Math.sin(a)*rr)+' ';}
- document.getElementById('radar').innerHTML=`<svg viewBox="0 0 220 205" width="100%">${grid}${axis}<polygon points="${pts}" fill="rgba(39,74,63,.22)" stroke="#274A3F" stroke-width="2"/></svg>`;
+const TYPE_NAMES={pl:'事業ドライバー型',keiei:'経営参謀型',org:'組織構築型',phase:'変革リーダー型',senmon:'スペシャリスト型'};
+const TAT_AVG=[91.7,89.0,84.3,24.7,84.4];
+function drawRadar(v,tat){
+ const labels=['PL','経営','組織','フェーズ','専門'],cx=110,cy=100,R=70,n=5;let grid='',axis='',pts='',tpts='';
+ for(let r=1;r<=3;r++){let p='';for(let i=0;i<n;i++){const a=-Math.PI/2+i*2*Math.PI/n;p+=(cx+Math.cos(a)*R*r/3)+','+(cy+Math.sin(a)*R*r/3)+' ';}grid+='<polygon points="'+p+'" fill="none" stroke="#DCE3EA"/>';}
+ for(let i=0;i<n;i++){const a=-Math.PI/2+i*2*Math.PI/n;axis+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+Math.cos(a)*R)+'" y2="'+(cy+Math.sin(a)*R)+'" stroke="#DCE3EA"/>';
+   const lx=cx+Math.cos(a)*(R+15),ly=cy+Math.sin(a)*(R+15);axis+='<text x="'+lx+'" y="'+(ly+4)+'" font-size="10" fill="#7C8894" text-anchor="middle" font-family="Noto Sans JP">'+labels[i]+'</text>';
+   const rr=R*v[i]/100;pts+=(cx+Math.cos(a)*rr)+','+(cy+Math.sin(a)*rr)+' ';if(tat){var tr=R*tat[i]/100;tpts+=(cx+Math.cos(a)*tr)+','+(cy+Math.sin(a)*tr)+' ';}}
+ var _lab=['PL','経営','組織','フェーズ','専門'];var _df=tat?_lab.map(function(l,i){var d=Math.round(v[i]-tat[i]);return '<b style=\'color:#0B2A4A;font-weight:700\'>'+l+'</b> '+(d>0?'+':(d<0?'\u2212':'\u00b1'))+Math.abs(d);}).join('\u3000'):'';document.getElementById('radar').innerHTML='<svg viewBox="0 0 220 205" width="100%">'+grid+axis+'<polygon points="'+tpts+'" fill="none" stroke="#F2711C" stroke-width="2" stroke-dasharray="5 3"/>'.replace(/^/,tat?'':'')+'<polygon points="'+pts+'" fill="rgba(31,111,209,.22)" stroke="#1F6FD1" stroke-width="2.4"/>'+'</svg>'+(tat?'<div style="font-size:11px;color:var(--ink-mute);margin-top:6px"><span style="color:#1F6FD1">&#9646;</span> あなた \uff0f <span style="color:#F2711C">\u256c\u256c</span> 役員の目標プロファイル</div><div style="font-size:11.5px;color:var(--ink-soft);margin-top:6px;line-height:1.7">目標との差 \u2500 '+_df+'</div>':'');
 }
-function drawBars(rows){document.getElementById('bars').innerHTML=rows.map(([n,v,avg])=>`<div class="bar"><div class="n"><span>${n}</span><span>${v}</span></div><div class="t"><div style="width:${v}%"></div></div></div>`).join('');}
+function drawBars(rows){document.getElementById('bars').innerHTML=rows.map(function(r){return '<div class="bar"><div class="n"><span>'+r[0]+'</span><span>'+r[1]+'</span></div><div class="t"><div class="u" style="width:'+r[1]+'%"></div><div class="avg" style="left:'+r[2]+'%"></div></div></div>';}).join('');}
 </script>
 </body>
 </html>

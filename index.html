@@ -1,245 +1,390 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>役員.com | 次世代役員候補のキャリア研究メディア</title>
-<meta name="description" content="あなたの役員候補度を、3分・10問で診断。役員・CxO・執行役員候補のキャリア実態を研究するメディア。運営：ブライエッジ株式会社">
+<meta name="robots" content="noindex,nofollow"><!-- 先方確認中のため。本公開時にこの行を削除 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MS8LC34M');</script>
+<!-- End Google Tag Manager -->
+<title>役員候補度診断（無料・約5分）｜課長・部長クラスのための現在地診断</title>
+<meta name="description" content="18問・約5分で、あなたの役員候補度を5つの軸で診断。役員の目標プロファイルとの差と、次に埋めるべき経験までその場で表示。会員登録不要・無料。運営：ブライエッジ株式会社">
+<link rel="canonical" href="https://yakuin-shindan.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="役員候補度診断">
+<meta property="og:title" content="役員候補度診断（無料・約5分）｜課長・部長クラスのための現在地診断">
+<meta property="og:description" content="18問・約5分で、あなたの役員候補度を5つの軸で診断。役員の目標プロファイルとの差と、次に埋めるべき経験までその場で表示。会員登録不要・無料。運営：ブライエッジ株式会社">
+<meta property="og:url" content="https://yakuin-shindan.com/">
+<meta property="og:image" content="https://yakuin-shindan.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B2A4A'/%3E%3Cpolygon points='32,10 52,25 44,50 20,50 12,25' fill='none' stroke='%23F2711C' stroke-width='4'/%3E%3Cpolygon points='32,20 44,29 40,43 24,43 20,29' fill='%231F6FD1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B2A4A; --navy2:#123C68; --blue:#1F6FD1; --sky:#EAF3FB; --sky2:#D6E8F7;
+  --orange:#F2711C; --orange2:#D85E0F; --yellow:#FFF27A;
+  --ink:#1D2A36; --ink2:#4B5A68; --mute:#7C8894; --line:#DCE3EA; --bg:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;color:var(--ink);background:var(--bg);line-height:1.8;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-weight:700;line-height:1.4;color:var(--navy)}
+h2{font-size:clamp(24px,3.6vw,34px);text-align:center}
+h2 .sub{display:block;font-size:14px;color:var(--blue);font-weight:700;letter-spacing:.08em;margin-bottom:8px}
+.mk{background:linear-gradient(transparent 55%,var(--yellow) 55%)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:18px;color:#fff;background:var(--orange);border-radius:999px;padding:18px 40px;text-decoration:none;box-shadow:0 6px 0 var(--orange2),0 10px 20px rgba(242,113,28,.25);transition:.15s;border:none;cursor:pointer;white-space:nowrap}
+.btn:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--orange2),0 8px 16px rgba(242,113,28,.25)}
+.btn small{font-size:13px;font-weight:500;opacity:.95}
+.btn .ar{font-size:20px}
+.btn-sm{font-size:14px;padding:11px 20px;box-shadow:0 3px 0 var(--orange2)}
+.btn-ghost{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none}
+.btn-ghost:hover{box-shadow:none;background:var(--sky)}
+.note{font-size:12.5px;color:var(--mute);margin-top:12px}
+section{padding:72px 0}
+@media(max-width:720px){section{padding:52px 0}}
+.ctabox{text-align:center;margin-top:40px}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line)}
+.hdr .in{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-weight:900;font-size:21px;color:var(--navy);text-decoration:none;letter-spacing:.02em}
+.logo span{font-size:11px;font-weight:500;color:var(--mute);margin-left:8px}
+@media(max-width:720px){.hdr .btn-sm{font-size:13px;padding:10px 16px}}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--sky) 0%,#fff 100%);padding:48px 0 56px;overflow:hidden}
+.hero .in{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+@media(max-width:840px){.hero .in{grid-template-columns:1fr;gap:24px}}
+.hero .tag{display:inline-block;background:var(--navy);color:#fff;font-size:13px;font-weight:700;padding:5px 14px;border-radius:4px;margin-bottom:16px}
+.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.32;margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero p.lead{font-size:17px;color:var(--ink2);margin-bottom:26px}
+.hero .ph{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:#dfe7ef}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero .ph .cap{position:absolute;right:8px;bottom:6px;font-size:10px;color:#fff;background:rgba(0,0,0,.35);padding:2px 6px;border-radius:3px}
+.checks{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:14px;font-weight:700;color:var(--navy)}
+.checks span::before{content:"✓";display:inline-block;color:#fff;background:var(--blue);border-radius:50%;width:20px;height:20px;line-height:20px;text-align:center;font-size:12px;margin-right:6px}
+
+/* for whom */
+.who{background:#fff}
+.who .in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:36px}
+@media(max-width:840px){.who .in{grid-template-columns:1fr;gap:24px}}
+.who .ph{border-radius:12px;overflow:hidden;aspect-ratio:4/3}
+.who .ph img{width:100%;height:100%;object-fit:cover}
+.wl{list-style:none}
+.wl li{position:relative;padding:14px 14px 14px 52px;border:1px solid var(--line);border-radius:8px;margin-bottom:10px;font-weight:500;font-size:16px;background:#fff}
+.wl li::before{content:"";position:absolute;left:16px;top:50%;transform:translateY(-50%);width:22px;height:22px;border:2px solid var(--blue);border-radius:4px;background:#fff}
+.wl li::after{content:"✓";position:absolute;left:19px;top:50%;transform:translateY(-52%);color:var(--blue);font-weight:900;font-size:17px}
+.who .lead2{margin-top:22px;font-size:17px;font-weight:700;color:var(--navy);text-align:center}
+
+/* 4 things */
+.four{background:var(--sky)}
+.fg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
+@media(max-width:900px){.fg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.fg{grid-template-columns:1fr}}
+.fc{background:#fff;border-radius:12px;padding:26px 20px 22px;text-align:center;box-shadow:0 2px 10px rgba(11,42,74,.06)}
+.fc .n{width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.fc svg{width:56px;height:56px;margin:0 auto 10px;display:block}
+.fc h3{font-size:17px;margin-bottom:6px}
+.fc p{font-size:13.5px;color:var(--ink2);line-height:1.7}
+
+/* result preview */
+.prev .in{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;margin-top:36px}
+@media(max-width:840px){.prev .in{grid-template-columns:1fr}}
+.phone{width:290px;margin:0 auto;border:10px solid #1b1f24;border-radius:36px;background:#fff;box-shadow:0 20px 40px rgba(0,0,0,.18);overflow:hidden}
+.phone .scr{padding:18px 16px 20px;font-size:12px}
+.phone .top{text-align:center;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:12px}
+.phone .top .l{font-size:11px;color:var(--mute)}
+.phone .top .t{font-size:22px;font-weight:900;color:var(--navy);line-height:1.2}
+.phone .top .ty{font-size:12px;color:var(--blue);font-weight:700;margin-top:2px}
+.phone .lg{font-size:10px;color:var(--mute);margin-top:6px;text-align:center}
+.phone .bar{margin-top:8px}
+.phone .bar .n{display:flex;justify-content:space-between;font-size:11px}
+.phone .bar .t{height:8px;background:#EEF2F6;border-radius:4px;position:relative;overflow:hidden}
+.phone .bar .u{height:100%;background:var(--blue);border-radius:4px}
+.phone .bar .g{position:absolute;top:0;width:3px;height:100%;background:var(--orange)}
+.phone .cta{margin-top:12px;background:var(--orange);color:#fff;text-align:center;border-radius:999px;padding:8px;font-weight:700;font-size:12px}
+.axes{list-style:none;margin-top:18px}
+.axes li{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+.axes li:last-child{border-bottom:1px solid var(--line)}
+.axes .k{flex:0 0 150px;font-weight:700;color:var(--navy);font-size:15px}
+.axes .v{font-size:14px;color:var(--ink2)}
+@media(max-width:520px){.axes li{flex-direction:column;gap:2px}.axes .k{flex:none}}
+
+/* reached */
+.reach{background:var(--navy);color:#fff}
+.reach h2{color:#fff}
+.reach h2 .sub{color:#9CC7F2}
+.rg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:36px}
+@media(max-width:720px){.rg{grid-template-columns:1fr}}
+.rc{background:#fff;color:var(--ink);border-radius:12px;padding:22px 22px 20px;display:flex;gap:16px;align-items:flex-start}
+.rc .ax{flex:0 0 auto;background:var(--sky);color:var(--navy);font-weight:700;font-size:12px;padding:6px 10px;border-radius:6px;white-space:nowrap}
+.rc p{font-size:15px;line-height:1.75}
+.rc p b{color:var(--navy)}
+.reach .src{font-size:12.5px;color:#B9CBE0;margin-top:18px;text-align:center}
+
+/* flow */
+.flow .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+@media(max-width:720px){.flow .steps{grid-template-columns:1fr}}
+.step{position:relative;background:#fff;border:2px solid var(--sky2);border-radius:12px;padding:28px 22px 24px;text-align:center}
+.step .n{display:inline-block;background:var(--blue);color:#fff;font-weight:900;font-size:13px;letter-spacing:.1em;padding:4px 14px;border-radius:999px;margin-bottom:12px}
+.step h3{font-size:19px;margin-bottom:8px}
+.step p{font-size:14px;color:var(--ink2)}
+.step .tm{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:var(--orange)}
+
+/* operator */
+.op{background:var(--sky)}
+.op .in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:36px}
+@media(max-width:840px){.op .in{grid-template-columns:1fr}}
+.op .ph{border-radius:12px;overflow:hidden;aspect-ratio:4/3}
+.op .ph img{width:100%;height:100%;object-fit:cover}
+.op h3{font-size:22px;margin-bottom:10px}
+.op p{font-size:15px;color:var(--ink2);margin-bottom:14px}
+.facts{list-style:none;background:#fff;border-radius:10px;padding:6px 18px}
+.facts li{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.facts li:last-child{border-bottom:none}
+.facts b{font-size:24px;font-weight:900;color:var(--navy)}
+.facts b small{font-size:14px;margin-left:2px}
+.op .sv{font-size:12px;color:var(--mute);margin-top:8px}
+
+
+/* nav + column */
+.gnav{display:flex;gap:22px;font-size:14px;font-weight:700}
+.gnav a{color:var(--navy);text-decoration:none}
+.gnav a:hover{color:var(--blue)}
+@media(max-width:860px){.gnav{display:none}}
+.col{background:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+@media(max-width:720px){.cards{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);background:#fff;transition:.15s;display:block}
+.card:hover{box-shadow:0 6px 18px rgba(11,42,74,.1);transform:translateY(-2px)}
+.card .th{aspect-ratio:16/9;background:#dfe7ef;overflow:hidden}
+.card .th img{width:100%;height:100%;object-fit:cover}
+.card .cl{font-size:11px;color:var(--blue);font-weight:700;padding:10px 14px 0}
+.card .tt{font-size:14.5px;font-weight:700;color:var(--navy);padding:4px 14px 4px;line-height:1.5}
+.card .ds{font-size:12.5px;color:var(--mute);padding:0 14px 12px;line-height:1.5}
+.col .more{text-align:center;margin-top:26px}
+
+/* faq */
+.faq .list{max-width:820px;margin:32px auto 0}
+.faq details{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;background:#fff}
+.faq summary{list-style:none;cursor:pointer;padding:16px 48px 16px 18px;font-weight:700;font-size:16px;color:var(--navy);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";display:inline-block;background:var(--blue);color:#fff;border-radius:50%;width:26px;height:26px;line-height:26px;text-align:center;font-size:13px;margin-right:10px}
+.faq summary::after{content:"＋";position:absolute;right:16px;top:14px;color:var(--blue);font-size:20px}
+.faq details[open] summary::after{content:"－"}
+.faq .a{padding:0 18px 16px 54px;font-size:14.5px;color:var(--ink2)}
+
+/* final */
+.final{background:linear-gradient(180deg,#fff,var(--sky));text-align:center}
+.final h2{margin-bottom:10px}
+.final p{color:var(--ink2);margin-bottom:26px}
+
+footer{background:var(--navy);color:#B9CBE0;padding:30px 0 90px;font-size:13px}
+footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer a{color:#fff;text-decoration:none;margin-left:18px}
+footer .cp{margin-top:10px;font-size:12px}
+
+/* sticky cta */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.95);border-top:1px solid var(--line);padding:10px 16px;display:flex;justify-content:center;backdrop-filter:blur(6px)}
+.sticky .btn{font-size:16px;padding:14px 28px;width:100%;max-width:480px}
+@media(min-width:841px){.sticky{display:none}footer{padding-bottom:30px}}
+</style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS8LC34M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- ============ HEADER ============ -->
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html"><span class="name">役員.com</span><span class="en">Executive Career Research</span></a>
-    <nav class="nav">
-      <a href="#steps">診断の流れ</a>
-      <a href="#research">調査データ</a>
-      <a href="column.html">コラム</a>
-      <a href="#about">運営</a>
-      <a class="btn btn-gold" href="shindan.html">無料で診断する</a>
-    </nav>
+<header class="hdr">
+  <div class="wrap in">
+    <a class="logo" href="./">役員候補度診断<span>運営：ブライエッジ株式会社</span></a>
+    <nav class="gnav"><a href="column/">コラム</a><a href="column/#A">エージェント比較</a><a href="column/#B">役員になる</a><a href="column/#D">データ</a></nav>
+    <a href="shindan.html" class="btn btn-sm">無料で診断する</a>
   </div>
 </header>
 
-<!-- ============ HERO（診断結果カードが主役） ============ -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-head">
-      <span class="kicker on-dark">Executive Career Research</span>
-      <h1>あなたは役員候補として、<br><em>いまどの位置</em>にいるか。</h1>
-    </div>
-
-    <!-- 診断結果カード（サンプル） -->
-    <div class="hero-card"><div class="result-card">
-      <div class="rc-head">
-        <span class="rc-lbl">Diagnosis Result</span>
-        <span class="rc-sample">結果サンプル</span>
-      </div>
-      <div class="rc-title">あなたの役員候補度</div>
-      <div class="gauge-wrap">
-        <svg viewBox="0 0 172 172" width="172" height="172">
-          <circle cx="86" cy="86" r="74" fill="none" stroke="#EFECE4" stroke-width="12"/>
-          <circle cx="86" cy="86" r="74" fill="none" stroke="#B79A5E" stroke-width="12" stroke-linecap="round" stroke-dasharray="464.96" stroke-dashoffset="83.7" transform="rotate(-90 86 86)"/>
-        </svg>
-        <div class="gc">
-          <div class="pct">上位 18<span style="font-size:18px">%</span></div>
-          <div class="sc">スコア 82 / 100</div>
-        </div>
-      </div>
-      <div class="rc-mid">
-        <svg viewBox="0 0 130 120" width="100%" aria-hidden="true">
-          <polygon points="65,10 110.6,43.2 93.2,96.8 36.8,96.8 19.4,43.2" fill="none" stroke="#E0DCD0"/>
-          <polygon points="65,34 96,45 82,88 43,90 37,45" fill="none" stroke="#E0DCD0" opacity=".6"/>
-          <polygon points="65,19.6 99.2,46.9 84.2,84.4 41,91 34.9,48.2" fill="rgba(39,74,63,.20)" stroke="#274A3F" stroke-width="2"/>
-        </svg>
-        <div class="rc-bars">
-          <div class="b"><div class="bn"><span>事業・PL責任</span><span>80</span></div><div class="bt"><div style="width:80%"></div></div></div>
-          <div class="b"><div class="bn"><span>経営への近さ</span><span>75</span></div><div class="bt"><div style="width:75%"></div></div></div>
-          <div class="b"><div class="bn"><span>組織マネジメント</span><span>68</span></div><div class="bt"><div style="width:68%"></div></div></div>
-        </div>
-      </div>
-      <div class="rc-foot">
-        <span class="typebadge"><span class="dot"></span>タイプ：事業推進型</span>
-        <span class="free">3分・無料</span>
-      </div>
-    </div></div>
-
-    <div class="hero-body">
-      <p>経験を10問で入力するだけ。あなたの「役員候補度」をスコアとレーダーで可視化します。3分・無料・在職中の情報収集にも。（同職位ベンチマークは調査データ蓄積後に提供）</p>
-      <div class="cta-row">
-        <a class="btn btn-gold" href="shindan.html">無料で役員候補度を診断する <span class="arw">&rsaquo;</span></a>
-        <a class="btn btn-ghost on-dark" href="#steps">診断の流れを見る</a>
-      </div>
-      <p class="microtrust">運営：ブライエッジ株式会社（ハイクラス人材紹介）</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TRUST STRIP ============ -->
-<section class="bg-surface" style="padding:30px 0">
-  <div class="container" style="display:flex;gap:36px;flex-wrap:wrap;justify-content:center;align-items:center;font-size:13.5px;color:var(--ink-soft)">
-    <span>運営：ブライエッジ株式会社（ハイクラス人材紹介）</span>
-    <span style="color:var(--line)">|</span>
-    <span>有料職業紹介事業許可 <span class="prov">◯◯-◯◯◯◯◯◯</span><span class="todo">要・許可番号</span></span>
-  </div>
-</section>
-
-<!-- ============ できること 3列 ============ -->
-<section class="bg-surface" style="padding-top:36px">
-  <div class="container">
-    <div class="sec-head center">
-      <span class="kicker">Why 役員.com</span>
-      <h2 class="h-sec">役員.comでできること</h2>
-    </div>
-    <div class="feat">
-      <div class="item">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
-        <h4>役員候補度を診断する</h4>
-        <p>経験を10問で入力すると、スコアとレーダーで自分の現在地がわかる。</p>
-      </div>
-      <div class="item">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
-        <h4>役員になる人の実態を知る</h4>
-        <p>役員に到達した人の経験・キャリアパスを、コラムで読み解く。調査データは順次公開予定。</p>
-      </div>
-      <div class="item">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a3 3 0 0 1-3 3H8l-5 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3z"/></svg></div>
-        <h4>キャリアを相談する</h4>
-        <p>希望者は、非公開のCxO・役員案件についてブライエッジに相談できる。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 3 STEPS ============ -->
-<section id="steps" class="bg-soft">
-  <div class="container">
-    <div class="sec-head center">
-      <span class="kicker">How it works</span>
-      <h2 class="h-sec">診断は3ステップ・約3分</h2>
-    </div>
-    <div class="stepflow">
-      <div class="s">
-        <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2.2"/></svg></div>
-        <div class="n">STEP 01</div><h4>10問に回答</h4><p>役職・経験・志向を選択式で。</p>
-      </div>
-      <div class="s">
-        <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
-        <div class="n">STEP 02</div><h4>結果を確認</h4><p>スコア・レーダー・ベンチマーク。</p>
-      </div>
-      <div class="s">
-        <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a3 3 0 0 1-3 3H8l-5 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3z"/></svg></div>
-        <div class="n">STEP 03</div><h4>任意でキャリア相談</h4><p>非公開の役員・CxO案件も。</p>
-      </div>
-    </div>
-    <div class="center mt40"><a class="btn btn-primary" href="shindan.html">診断をはじめる <span class="arw">&rsaquo;</span></a></div>
-  </div>
-</section>
-
-<!-- ============ RESEARCH（調査は実施中・正直版） ============ -->
-<section id="research" class="bg-surface">
-  <div class="narrow center">
-    <span class="kicker">Research</span>
-    <h2 class="h-sec">次世代役員候補の実態を、<br>これから調査します。</h2>
-    <p class="lead">役員・CxO・執行役員候補のキャリア実態調査を実施中です。ご回答いただいた方には、結果がまとまり次第、調査レポートを先行してお送りします。</p>
-    <p style="font-size:12.5px;color:var(--ink-mute);margin-top:18px">※ 調査結果・統計データは、十分な回答が集まり次第、この場で公開します。</p>
-  </div>
-</section>
-
-<!-- ============ INSIGHTS（抽象サムネイル） ============ -->
-<section id="insights" class="bg-soft">
-  <div class="container">
-    <div class="sec-head center">
-      <span class="kicker">Insights</span>
-      <h2 class="h-sec">紹介現場から見た、役員キャリアのリアル</h2>
-      <p class="lead">ブライエッジの実際の支援知見をもとにした記事（内容は暫定）</p>
-    </div>
-    <div class="grid g3">
-      <a class="card" href="column.html">
-        <div class="abthumb v1"><span class="cat">On-site Knowledge</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></div>
-        <div class="body"><span class="tag">On-site Knowledge</span><h3>IPO準備企業のCFOに、本当に求められる経験<span class="todo">暫定</span></h3><div class="meta">ブライエッジ ・ 監修 <span class="prov">◯◯</span></div></div>
-      </a>
-      <a class="card" href="column.html">
-        <div class="abthumb v2"><span class="cat">On-site Knowledge</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
-        <div class="body"><span class="tag">On-site Knowledge</span><h3>スタートアップCxOで活躍する人としない人の差<span class="todo">暫定</span></h3><div class="meta">ブライエッジ ・ 監修 <span class="prov">◯◯</span></div></div>
-      </a>
-      <a class="card" href="column.html">
-        <div class="abthumb v3"><span class="cat">Basics</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l8 4v5c0 5-3.4 7.5-8 9-4.6-1.5-8-4-8-9V7z"/></svg></div>
-        <div class="body"><span class="tag">Basics</span><h3>執行役員と取締役は、何が違うのか<span class="todo">暫定</span></h3><div class="meta">ブライエッジ</div></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ABOUT ============ -->
-<section id="about" class="bg-surface">
-  <div class="container split">
-    <div class="photo ratio-hero demo">
-      <img src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1200&q=72&auto=format&fit=crop" alt="明るいオフィス・対話イメージ（仮）">
-    </div>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap in">
     <div>
-      <span class="kicker">About</span>
-      <h2 class="h-sec">企業の採用背景まで理解する、<br>ハイクラス人材紹介が運営。</h2>
-      <p class="lead">役員.comは、IT・SaaS・成長企業の経営者・採用責任者と向き合うブライエッジ株式会社が運営しています。求人票には表れない採用背景・組織課題まで理解したうえで、候補者の経験がどう活きるかを見立てます。</p>
-      <div class="todo-block mt24">
-        <p style="font-size:14px;color:var(--ink-soft);margin:0">会社概要・実績数値・有料職業紹介事業許可番号・監修者プロフィールを、正式なものに差し替えてください。</p>
-        <ul style="font-size:13px;color:var(--ink-soft);margin:10px 0 0 18px">
-          <li>許可番号 <span class="prov">◯◯-◯◯◯◯◯◯</span></li>
-          <li>成約実績・支援年収レンジ・定着率 <span class="prov">正式確認後に反映</span></li>
-          <li>監修コンサルタント（実名・肩書き・顔写真）</li>
+      <div class="tag">課長・部長クラスのための役員候補度診断</div>
+      <h1>あなたは役員候補として、<br>いま<em>どこにいるのか</em>。</h1>
+      <p class="lead">18問・約5分。<span class="mk">事業・経営・組織・変革・専門の5つの軸</span>で役員候補度をスコア化し、役員の目標プロファイルとの差と、次に埋めるべき経験までその場で表示します。</p>
+      <a href="shindan.html" class="btn">無料で診断する <small>（約5分）</small><span class="ar">›</span></a>
+      <div class="checks"><span>無料</span><span>会員登録不要</span><span>結果はその場で表示</span><span>スマホで完結</span></div>
+    </div>
+    <div class="ph"><img src="https://images.unsplash.com/photo-1733348137468-90b917d2ebf1?auto=format&fit=crop&w=900&h=675&q=70" alt="" loading="eager"><span class="cap">※写真はイメージです</span></div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who">
+  <div class="wrap">
+    <h2><span class="sub">こんな方に</span>上司にも同僚にも、正面からは聞けないこと</h2>
+    <div class="in">
+      <ul class="wl">
+        <li>課長・部長として成果は出してきた。次に役員が見えてきたが、自分が「候補」なのかは分からない</li>
+        <li>社内の評価は悪くない。ただ、社外に出たときに通用する水準なのかを一度測っておきたい</li>
+        <li>「あと何が足りないのか」を、感覚ではなく形で知りたい</li>
+        <li>転職サイトに登録するほどではない。でも、自分の現在地は知っておきたい</li>
+      </ul>
+      <div class="ph"><img src="https://images.unsplash.com/photo-1790596685397-e45db9be7ff8?auto=format&fit=crop&w=900&h=675&q=70" alt="" loading="lazy"></div>
+    </div>
+    <p class="lead2">目指すほど、自分の位置は見えなくなる。役員候補度診断は、その現在地を5つの軸で形にします。</p>
+  </div>
+</section>
+
+<!-- FOUR -->
+<section class="four">
+  <div class="wrap">
+    <h2><span class="sub">診断で分かること</span>スコアで終わらせない、<span class="mk">4つの結果</span></h2>
+    <div class="fg">
+      <div class="fc"><div class="n">1</div>
+        <svg viewBox="0 0 56 56" fill="none" stroke="#1F6FD1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 44V22l10-8 10 8 10-8 10 8v22"/><path d="M8 44h40"/><path d="M18 44V30M38 44V30"/></svg>
+        <h3>役員候補度のスコアと段階</h3><p>総合スコアを4段階（エグゼクティブ・レディ／有力候補／育成途上／基盤形成）で判定。</p></div>
+      <div class="fc"><div class="n">2</div>
+        <svg viewBox="0 0 56 56" fill="none" stroke="#1F6FD1" stroke-width="2.4" stroke-linejoin="round"><polygon points="28,6 49,21 41,47 15,47 7,21"/><polygon points="28,16 41,25 36,40 20,40 15,25" fill="#EAF3FB"/><path d="M28 6v41M7 21l34 26M49 21L15 47"/></svg>
+        <h3>5軸レーダーと候補タイプ</h3><p>事業・PL／経営への近さ／組織／事業フェーズ・変革／専門。最も高い軸から5つの候補タイプを判定。</p></div>
+      <div class="fc"><div class="n">3</div>
+        <svg viewBox="0 0 56 56" fill="none" stroke="#1F6FD1" stroke-width="2.4" stroke-linecap="round"><path d="M10 14h36M10 28h24M10 42h30"/><circle cx="46" cy="28" r="4" fill="#F2711C" stroke="none"/><circle cx="44" cy="42" r="4" fill="#F2711C" stroke="none"/></svg>
+        <h3>役員の目標プロファイルとの差</h3><p>役員に到達した人のプロファイルと軸ごとに比べ、どこがどれだけ離れているかを数字で示します。</p></div>
+      <div class="fc"><div class="n">4</div>
+        <svg viewBox="0 0 56 56" fill="none" stroke="#1F6FD1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 46L26 30"/><path d="M26 30l8-8 8 8-8 8z" fill="#EAF3FB"/><path d="M34 22l12-12M38 10h8v8"/></svg>
+        <h3>強みと、次に埋める経験</h3><p>役職×軸で用意した文章で、あなたの強み2つと、次に取りにいくべき経験2つを具体的に提示。</p></div>
+    </div>
+    <div class="ctabox"><a href="shindan.html" class="btn">無料で診断する <small>（約5分）</small><span class="ar">›</span></a><div class="note">会員登録は不要です。結果はメールアドレス入力後にその場で表示されます。</div></div>
+  </div>
+</section>
+
+<!-- PREVIEW -->
+<section class="prev">
+  <div class="wrap">
+    <h2><span class="sub">結果画面のイメージ</span>あなたの現在地が、<span class="mk">1枚で分かる</span></h2>
+    <div class="in">
+      <div class="phone"><div class="scr">
+        <div class="top"><div class="l">あなたの役員候補度</div><div class="t">有力候補</div><div class="ty">経営参謀型</div></div>
+        <svg viewBox="0 0 220 190" width="100%">
+          <g fill="none" stroke="#DCE3EA"><polygon points="110,18 184,72 156,160 64,160 36,72"/><polygon points="110,48 159,84 140,142 80,142 61,84"/><polygon points="110,78 134,96 125,124 95,124 86,96"/><line x1="110" y1="106" x2="110" y2="18"/><line x1="110" y1="106" x2="184" y2="72"/><line x1="110" y1="106" x2="156" y2="160"/><line x1="110" y1="106" x2="64" y2="160"/><line x1="110" y1="106" x2="36" y2="72"/></g>
+          <polygon points="110,24 178,75 151,152 70,152 42,75" fill="none" stroke="#F2711C" stroke-width="2" stroke-dasharray="5 3"/>
+          <polygon points="110,40 160,84 138,138 84,146 58,88" fill="rgba(31,111,209,.22)" stroke="#1F6FD1" stroke-width="2.4"/>
+          <g font-size="10" fill="#7C8894" text-anchor="middle" font-family="Noto Sans JP"><text x="110" y="11">PL</text><text x="198" y="74">経営</text><text x="160" y="176">組織</text><text x="60" y="176">フェーズ</text><text x="22" y="74">専門</text></g>
+        </svg>
+        <div class="lg"><span style="color:#1F6FD1">■</span> あなた ／ <span style="color:#F2711C">╌╌</span> 役員の目標プロファイル</div>
+        <div class="bar"><div class="n"><span>事業・PL責任</span><span>62</span></div><div class="t"><div class="u" style="width:62%"></div><div class="g" style="left:90%"></div></div></div>
+        <div class="bar"><div class="n"><span>経営への近さ</span><span>71</span></div><div class="t"><div class="u" style="width:71%"></div><div class="g" style="left:88%"></div></div></div>
+        <div class="bar"><div class="n"><span>組織マネジメント</span><span>55</span></div><div class="t"><div class="u" style="width:55%"></div><div class="g" style="left:84%"></div></div></div>
+        <div class="cta">役員人材の専門家に相談する</div>
+      </div></div>
+      <div>
+        <h3 style="font-size:22px;margin-bottom:6px">5つの軸で、役員候補度を測ります</h3>
+        <p style="font-size:14.5px;color:var(--ink2)">役員登用の場面で実際に問われる経験を、5つの軸に分けて設問化しています。</p>
+        <ul class="axes">
+          <li><span class="k">事業・PL責任</span><span class="v">損益を背負った範囲と規模、投資の決裁権限</span></li>
+          <li><span class="k">経営への近さ</span><span class="v">経営会議・取締役会への関与、役員との協働、社外との接点</span></li>
+          <li><span class="k">組織マネジメント</span><span class="v">率いた人数、年数、採用・組織づくりへの関与</span></li>
+          <li><span class="k">事業フェーズ・変革</span><span class="v">拡大期・IPO・0→1の経験、資金調達やM&amp;Aへの関与</span></li>
+          <li><span class="k">専門・市場価値</span><span class="v">現役職での経験年数と、市場で評価される専門性</span></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="bg-soft">
-  <div class="narrow">
-    <div class="sec-head center"><span class="kicker">FAQ</span><h2 class="h-sec">よくあるご質問</h2></div>
-    <div class="faq">
-      <details open><summary><span class="q"><span class="mk">Q</span>診断は無料ですか？</span><span class="pm">+</span></summary><div class="ans">はい、無料です。メールアドレスのご登録で、診断結果とベンチマークをご覧いただけます。</div></details>
-      <details><summary><span class="q"><span class="mk">Q</span>今すぐ転職するつもりはありませんが、利用できますか？</span><span class="pm">+</span></summary><div class="ans">はい。自分の現在地を知る情報収集としてご利用いただけます。キャリア相談も、中長期のご相談から歓迎しています。</div></details>
-      <details><summary><span class="q"><span class="mk">Q</span>回答内容が公開されたり、勤務先に知られたりしませんか？</span><span class="pm">+</span></summary><div class="ans">回答は統計化・匿名化のうえで活用し、個人が特定される形で公開することはありません。ご本人の同意なく勤務先に連絡することもありません。</div></details>
-      <details><summary><span class="q"><span class="mk">Q</span>診断すると、求人を大量に紹介されますか？</span><span class="pm">+</span></summary><div class="ans">いいえ。求人案内やキャリア面談は任意です。ご希望された場合のみ、ブライエッジよりご案内します。</div></details>
+<!-- REACHED -->
+<section class="reach">
+  <div class="wrap">
+    <h2><span class="sub">到達者に学ぶ</span>役員になった人は、ここを埋めている</h2>
+    <div class="rg">
+      <div class="rc"><span class="ax">事業・PL責任</span><p><b>「予算を守る」から「利益を作る」へ。</b>部門予算の管理者から、売上と利益の両方に責任を持つ事業リーダーへ自ら手を挙げて移った人が、役員への距離を一気に縮めています。</p></div>
+      <div class="rc"><span class="ax">経営への近さ</span><p><b>報告する側から、決めさせる側へ。</b>経営会議に「出席」するのではなく、論点と打ち手を持ち込み、議案のオーナーとして議決に踏み込んだ経験が、登用の決め手になっています。</p></div>
+      <div class="rc"><span class="ax">組織マネジメント</span><p><b>自分が動く組織から、任せて回る組織へ。</b>部門をまたぐ横断組織や、全社の採用・組織設計に関わり「組織を作る側」に回った経験が評価されています。</p></div>
+      <div class="rc"><span class="ax">事業フェーズ・変革</span><p><b>整った環境の外に、自分で出る。</b>安定事業から拡大期やIPO準備の現場へ自ら異動し、前例のない状況で判断し切った経験が、他の候補との差になっています。</p></div>
+    </div>
+    <p class="src">ブライエッジのエグゼクティブサーチ・人材紹介の支援知見にもとづく傾向です。診断結果では、あなたの弱み軸に合わせて「到達者はこう埋めた」を表示します。</p>
+    <div class="ctabox"><a href="shindan.html" class="btn">無料で診断する <small>（約5分）</small><span class="ar">›</span></a></div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow">
+  <div class="wrap">
+    <h2><span class="sub">診断の流れ</span>登録なし、<span class="mk">3ステップ</span>で結果まで</h2>
+    <div class="steps">
+      <div class="step"><span class="n">STEP 1</span><h3>18問に答える</h3><p>役職・マネジメント人数・PL規模など、選択式が中心。途中の区切りはありません。</p><span class="tm">約5分</span></div>
+      <div class="step"><span class="n">STEP 2</span><h3>結果をその場で見る</h3><p>メールアドレスを入力すると、スコア・レーダー・差分・次の一手がすぐ表示されます。</p><span class="tm">会員登録不要</span></div>
+      <div class="step"><span class="n">STEP 3</span><h3>相談する（任意）</h3><p>必要なら、役員人材を専門に扱うブライエッジのコンサルタントにキャリア相談ができます。</p><span class="tm">無料・秘密厳守</span></div>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA BAND ============ -->
-<section class="cta-band">
-  <div class="narrow">
-    <span class="kicker on-dark">Get Started</span>
-    <h2>まずは、あなたの役員候補度を知ることから。</h2>
-    <p>今すぐの転職でなくても大丈夫。自分の現在地を知る診断から始められます。</p>
-    <a class="btn btn-gold" href="shindan.html">無料で診断する <span class="arw">&rsaquo;</span></a>
+<!-- OPERATOR -->
+<section class="op">
+  <div class="wrap">
+    <h2><span class="sub">運営・監修</span>役員クラスの紹介を手がける会社が、設計しています</h2>
+    <div class="in">
+      <div class="ph"><img src="https://images.unsplash.com/photo-1758691737278-3af15b37af48?auto=format&fit=crop&w=900&h=675&q=70" alt="" loading="lazy"></div>
+      <div>
+        <h3>ブライエッジ株式会社</h3>
+        <p>エグゼクティブサーチ・人材紹介・人事制度構築を手がける会社です。役員・経営幹部クラスの転職支援で蓄積した「何が問われ、誰が到達するか」の知見をもとに、設問とコメントを設計・監修しています。</p>
+        <ul class="facts">
+          <li><span>支援した人材の定着率</span><b>93<small>%</small></b></li>
+          <li><span>利用者満足度</span><b>90<small>%</small></b></li>
+          <li><span>Google口コミ評価</span><b>4.9<small>★</small></b></li>
+        </ul>
+        <p class="sv">※ブライエッジの人材紹介事業の実績。設問・コメントの設計・監修：ブライエッジ株式会社</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="top">
-      <div class="brand"><span class="name">役員.com</span><span class="en">Executive Career Research</span></div>
-      <nav class="fnav">
-        <a href="#steps">診断の流れ</a><a href="#research">調査データ</a><a href="column.html">コラム</a><a href="#about">運営</a><a href="shindan.html">診断</a><a href="privacy.html">プライバシーポリシー</a>
-      </nav>
-    </div>
-    <div class="legal">
-      <span>運営：ブライエッジ株式会社 ／ 有料職業紹介事業許可 <span class="prov">◯◯-◯◯◯◯◯◯</span> <span class="todo">要差し替え</span></span>
-      <span>&copy; BRIEDGE CORPORATION</span>
-    </div>
-    <div style="margin-top:16px;font-size:11px;color:rgba(255,255,255,.45)">※ 掲載写真はビジュアル確認用の仮画像（Unsplash・人物なし）です。本番は正規ライセンス／ブライエッジの実写真に差し替えます。</div>
+<!-- COLUMN -->
+<section class="col">
+  <div class="wrap">
+    <h2><span class="sub">コラム</span>役員になる人の<span class="mk">数字と道筋</span>を知る</h2>
+    <div class="cards"><a class="card" href="column/executive-agent-hikaku.html"><div class="th"><img src="https://images.unsplash.com/photo-1588571907856-a68e5cc3f5b5?auto=format&fit=crop&w=600&h=337&q=70" alt="" loading="lazy"></div><div class="cl">比較・選び方</div><div class="tt">エグゼクティブ転職エージェントおすすめ比較【役員・経営幹部向け12社】</div><div class="ds">役員・経営幹部クラスを扱う転職エージェント12社を、型（登録型・スカウト型・サーチ型）・対象年収帯・公開数字（時点付き）で同じ列で比較。部長…</div></a><a class="card" href="column/yakuin-ni-naru-niwa.html"><div class="th"><img src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&h=337&q=70" alt="" loading="lazy"></div><div class="cl">役員になる</div><div class="tt">役員になるには｜部長から役員へ上がる人の共通点と道筋</div><div class="ds">役員になるには社内昇格・転職・社外取締役の3ルートがあります。部長から役員へ上がる人に共通する4つの経験、部長53.1歳・役員60〜64歳と…</div></a><a class="card" href="column/yakuin-hoshu-souba.html"><div class="th"><img src="https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?auto=format&fit=crop&w=600&h=337&q=70" alt="" loading="lazy"></div><div class="cl">役員になる</div><div class="tt">役員報酬の相場｜規模別・役位別の平均と中央値（人事院・労政研の最新データ）</div><div class="ds">役員報酬の相場を人事院（令和5年）と労務行政研究所（2024年）の数字で規模別・役位別に整理。取締役は平均2,054万円・中央値1,800万…</div></a><a class="card" href="column/bucho-domari-to-yakuin-no-sa.html"><div class="th"><img src="https://images.unsplash.com/photo-1758691736424-4b4273948341?auto=format&fit=crop&w=600&h=337&q=70" alt="" loading="lazy"></div><div class="cl">役員になる</div><div class="tt">部長止まりの人と役員になる人の差｜評価者が見ている5つの違い</div><div class="ds">部長で止まる人と役員になる人の差は能力ではなく、予算を守るか利益を作るか、報告するか決めさせるか、など5点の違いです。平康慶浩氏の「課長昇進…</div></a><a class="card" href="column/yakuin-no-nenrei.html"><div class="th"><img src="https://images.unsplash.com/photo-1503423571797-2d2bb372094a?auto=format&fit=crop&w=600&h=337&q=70" alt="" loading="lazy"></div><div class="cl">役員になる</div><div class="tt">役員になる年齢は何歳か｜社長の平均63.59歳と役員の年齢分布</div><div class="ds">役員の年齢は60〜64歳が最多（日本総研2025年度版）、社長の平均は63.59歳（東京商工リサーチ2024年）、部長の平均は53.1歳（賃…</div></a><a class="card" href="column/yakuin-class-tenshoku-muzukashii.html"><div class="th"><img src="https://images.unsplash.com/photo-1733348137468-90b917d2ebf1?auto=format&fit=crop&w=600&h=337&q=70" alt="" loading="lazy"></div><div class="cl">転職の実務</div><div class="tt">役員クラスの転職は難しいか｜公開求人がない構造と、見つけてもらう側に回る方法</div><div class="ds">役員クラスの転職が難しい理由は求人が無いからではなく、非公開のサーチで動く構造にあります。需要は500人未満の企業に集中（JAC調査2023…</div></a></div>
+    <div class="more"><a href="column/" class="btn btn-ghost">コラム一覧（48本）を見る ›</a></div>
   </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <h2><span class="sub">よくある質問</span>FAQ</h2>
+    <div class="list">
+      <details open><summary>本当に無料ですか？会員登録は必要ですか？</summary><div class="a">無料です。会員登録は不要で、結果を表示する前にメールアドレスのみご入力いただきます。</div></details>
+      <details><summary>どれくらい時間がかかりますか？</summary><div class="a">全18問・約5分です。選択式が中心で、途中で区切られることはありません。</div></details>
+      <details><summary>今すぐ転職するつもりはありませんが、受けてもいいですか？</summary><div class="a">はい。診断は現在地を知るためのものです。相談は任意で、ご希望の方にだけご案内します。</div></details>
+      <details><summary>現職に知られたくありません。情報はどう扱われますか？</summary><div class="a">回答は統計化・匿名化して診断の精度向上に利用します。個人が特定される形で公開・共有されることはありません。詳細は<a href="https://briedge.co.jp/contact/pp" target="_blank" rel="noopener" style="color:var(--blue)">プライバシーポリシー</a>をご確認ください。</div></details>
+      <details><summary>「役員の目標プロファイル」とは何ですか？</summary><div class="a">ブライエッジが支援した役員到達者の傾向をもとに設定した、各軸の目標水準です。回答の蓄積とともに更新していきます。</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap">
+    <h2>あなたの現在地を、5分で確かめる。</h2>
+    <p>役員候補としての位置と、次に埋めるべき経験が分かります。</p>
+    <a href="shindan.html" class="btn">無料で診断する <small>（約5分）</small><span class="ar">›</span></a>
+    <div class="note">無料・会員登録不要・結果はその場で表示</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap in">
+    <div><b style="color:#fff;font-size:16px">役員候補度診断</b><br>運営：ブライエッジ株式会社 ／ 有料職業紹介事業許可番号 13-ユ-306555</div>
+    <nav><a href="https://briedge.co.jp/contact/pp" target="_blank" rel="noopener">プライバシーポリシー</a><a href="https://briedge.co.jp/" target="_blank" rel="noopener">運営会社</a></nav>
+  </div>
+  <div class="wrap cp">© 2026 BRIEDGE Co., Ltd.</div>
 </footer>
 
-<!-- 追従CTA -->
-<a class="btn btn-gold sticky-cta" href="shindan.html">無料で診断する <span class="arw">&rsaquo;</span></a>
-
+<div class="sticky"><a href="shindan.html" class="btn">無料で診断する（約5分） ›</a></div>
 </body>
 </html>

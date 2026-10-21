@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+# 先方確認中はサイトマップを出さない。本公開時に下の行を戻す
+# Sitemap: https://yakuin-shindan.com/sitemap.xml
